@@ -8,15 +8,17 @@ Class {
 TemperatureConverter >> convertCelsius: anInteger [ 
 	"Convert anInteger from celcius to fahrenheit"
 	
-	^ ((anInteger * 1.8) + 32)
+	^ ((anInteger * 1.8) + 32) round: 1
 ]
 
 { #category : #convert }
 TemperatureConverter >> convertFarhenheit: anInteger [ 
-	^ ((anInteger - 32) / 1.8) 
+	"Convert anInteger from fahrenheit to celcius"
+	
+	^ ((anInteger - 32) / 1.8) round: 1
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #convert }
 TemperatureConverter >> convertFarhenheitFrom: low to: high by: step [ 
 	"Returns pairs (f, c) for all the farhenheit temperatures from a low to an high temperature"
 	
