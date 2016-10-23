@@ -25,7 +25,7 @@ TemperatureConverterTest >> testFToCScale [
 ]
 
 { #category : #tests }
-TemperatureConverterTest >> testFToCScale2 [
+TemperatureConverterTest >> testFToCScaleUsingWithDo [
 
 	| converter results expectedCelcius |
 	converter := TemperatureConverter new. 

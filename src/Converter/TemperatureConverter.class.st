@@ -20,8 +20,8 @@ TemperatureConverter >> convertFarhenheit: anInteger [
 
 { #category : #convert }
 TemperatureConverter >> convertFarhenheitFrom: low to: high by: step [ 
-	"Returns pairs (f, c) for all the farhenheit temperatures from a low to an high temperature"
-	
+	"Returns a collection of pairs (f, c) for all the farhenheit temperatures from a low to an high temperature"
+
 	^ (low to: high by: step)
 		collect: [ :f | f -> (self convertFarhenheit: f) ]
 ]
