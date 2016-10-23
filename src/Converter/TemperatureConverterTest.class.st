@@ -18,7 +18,7 @@ TemperatureConverterTest >> testFToCScale [
 	| converter results exceptedCelcius |
 	converter := TemperatureConverter new. 
 	results := (converter convertFarhenheitFrom: 50 to: 70 by: 2).
-	exceptedCelcius := #(10.0 11.1 12.2 13.3 14.4 15.5 16.6 17.7 18.8 20.0 21.1 22.2 23.3 24.4 25.5 26.6).
+	exceptedCelcius := #(10.0 11.1 12.2 13.3 14.4 15.5 16.6 17.7 18.8 20.0 21.1).
 	
 	1 to: results size do: [:i |
 		self assert: ((results at: i) value closeTo: (exceptedCelcius at: i) precision: 0.1) ] 
@@ -27,13 +27,13 @@ TemperatureConverterTest >> testFToCScale [
 { #category : #tests }
 TemperatureConverterTest >> testFToCScale2 [
 
-	| converter results exceptedCelcius |
+	| converter results expectedCelcius |
 	converter := TemperatureConverter new. 
 	results := (converter convertFarhenheitFrom: 50 to: 70 by: 2).
-	exceptedCelcius := #(10.0 11.1 12.2 13.3 14.4 15.5 16.6 17.7 18.8 20.0 21.1 22.2 23.3 24.4 25.5 26.6).
+	expectedCelcius := #(10.0 11.1 12.2 13.3 14.4 15.5 16.6 17.7 18.8 20.0 21.1).
 	
-	1 to: results size do: [:i |
-		self assert: ((results at: i) value closeTo: (exceptedCelcius at: i) precision: 0.1) ] 
+	results with: expectedCelcius 
+		do: [ :res :cel | res value closeTo: cel ] 
 ]
 
 { #category : #tests }
