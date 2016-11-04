@@ -8,14 +8,14 @@ Class {
 TemperatureConverter >> convertCelsius: anInteger [ 
 	"Convert anInteger from celcius to fahrenheit"
 	
-	^ ((anInteger * 1.8) + 32) round: 1
+	^ ((anInteger * 1.8) + 32)
 ]
 
 { #category : #convert }
 TemperatureConverter >> convertFarhenheit: anInteger [ 
 	"Convert anInteger from fahrenheit to celcius"
 	
-	^ ((anInteger - 32) / 1.8) round: 1
+	^ ((anInteger - 32) / 1.8)
 ]
 
 { #category : #convert }
