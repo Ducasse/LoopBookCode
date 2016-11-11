@@ -6,7 +6,15 @@ An isogram is a word or phrase without a repeating letter. Examples of isograms:
 - 'downstream'
 -  'subdermatoglyphic'
 
-http://www.pallier.org/ressources/dicofr/liste.de.mots.francais.frgut.txt
+Have fun finding french isograms!
+Tx to Sven Van Caekenberghe
+[[[
+(ZnDefaultCharacterEncoder 
+  value: ZnCharacterEncoder latin1 
+  during: [
+    ZnClient new 
+      get: 'http://www.pallier.org/ressources/dicofr/liste.de.mots.francais.frgut.txt' ]) lines.
+]]]
 "
 Class {
 	#name : #GramChecker,
@@ -14,27 +22,7 @@ Class {
 	#category : #'Loop-StarGram'
 }
 
-{ #category : #'as yet unclassified' }
-GramChecker >> isIsogram2: aString [
-	"self new isIsogram: 'ALTRUISME'"
-	| dict |
-	dict := Dictionary new. 
-	aString do: [ :each |
-			dict at: each 
-				ifPresent: [^ false] 
-				ifAbsent: [ dict at: each put: 1]. 
-			].
-	^ true
-]
-
-{ #category : #'as yet unclassified' }
-GramChecker >> isIsogram3: aString [
-	"self new isIsogram2: 'ALTRUISME'"
-	^ aString asSet size = aString size
-
-]
-
-{ #category : #'as yet unclassified' }
+{ #category : #isograms }
 GramChecker >> isIsogram4: aString [
 	"self new isIsogram2: 'ALTRUISME'"
 
@@ -50,7 +38,7 @@ GramChecker >> isIsogram4: aString [
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #isograms }
 GramChecker >> isIsogram: aString [
 	"self new isIsogram: 'ALTRUISME'"
 	| bag |
@@ -59,4 +47,24 @@ GramChecker >> isIsogram: aString [
 			bag add: each. 
 			].
 	^ bag sortedCounts first key = 1
+]
+
+{ #category : #isograms }
+GramChecker >> isIsogramDictionaryImplementation: aString [
+	"self new isIsogramDictionaryImplementation: 'ALTRUISME'"
+	| dict |
+	dict := Dictionary new. 
+	aString do: [ :each |
+			dict at: each 
+				ifPresent: [^ false] 
+				ifAbsent: [ dict at: each put: 1]. 
+			].
+	^ true
+]
+
+{ #category : #isograms }
+GramChecker >> isIsogramSetImplementation: aString [
+	"self new isIsogramSetImplementation: 'ALTRUISME'"
+	^ aString asSet size = aString size
+
 ]

@@ -1,7 +1,6 @@
 "
 [ [ [ 
-[ GramChecker new
-	isIsogram: 'ALTRUISME'] bench '99,720 per second'
+[  'ALTRUISME' isIsogramSetImplementation ] bench 
  ] ] ]
 
 [ [ [ 
@@ -25,12 +24,12 @@ Class {
 	#category : #'Loop-StarGram'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #data }
 GramCheckerTest >> isograms [
-	^ #('PHARO' 'PATHFINDER' 'XAVIER' 'LUMBERJACK' 'ALTRUISME'  'ANTIPODE')
+	^  #('pharo' 'pathfinder' 'xavier' 'francois' 'lumberjack' 'altruisme' 'antipode')
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #tests }
 GramCheckerTest >> test2Isograms [
 	| checker |
 	checker := GramChecker new.
@@ -39,7 +38,7 @@ GramCheckerTest >> test2Isograms [
 		self assert: (checker isIsogram2: each)]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #tests }
 GramCheckerTest >> test3Isograms [
 	| checker |
 	checker := GramChecker new.
@@ -48,7 +47,7 @@ GramCheckerTest >> test3Isograms [
 		self assert: (checker isIsogram3: each)]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #tests }
 GramCheckerTest >> test4Isograms [
 	| checker |
 	checker := GramChecker new.
@@ -57,7 +56,39 @@ GramCheckerTest >> test4Isograms [
 		self assert: (checker isIsogram4: each)]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'tests-isogram-string' }
+GramCheckerTest >> testAllIsogramSetImplementation [
+	
+	self isograms do: [ :word |
+		self assert: word isIsogramSetImplementation ]
+]
+
+{ #category : #'tests-pangram' }
+GramCheckerTest >> testDetectFirstMissingLetter [
+
+	self assert: ('the quick brown fox jumps over the lzy dog' detectMissingLettersFor: 'abcdefghijklmnopqrstuvwxyz') equals: $a.
+	self assert: ('the uick brown fox jumps over the lazy dog' detectMissingLettersFor: 'abcdefghijklmnopqrstuvwxyz') equals: $q.
+	
+	
+]
+
+{ #category : #'tests-pangram' }
+GramCheckerTest >> testIsEnglishPangram [
+
+	self assert: 'the quick brown fox jumps over the lazy dog' isEnglishPangram.
+	self assert: 'the five boxing wizards jump quickly' isEnglishPangram.
+	self deny: 'the quick brown fox jumps over the  dog' isEnglishPangram.
+]
+
+{ #category : #'tests-pangram' }
+GramCheckerTest >> testIsPangramIn [
+
+	self assert: ('The quick brown fox jumps over the lazy dog' isPangramIn: 'abcdefghijklmnopqrstuvwxyz').
+	self assert: ('ma papa mama' isPangramIn: 'apm').
+	
+]
+
+{ #category : #tests }
 GramCheckerTest >> testIsogram [
 	| checker |
 	checker := GramChecker new.
@@ -66,7 +97,17 @@ GramCheckerTest >> testIsogram [
 	self assert: (checker isIsogram: 'ALTRUISME').
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'tests-isogram-string' }
+GramCheckerTest >> testIsogramSetImplementation [
+	
+	self assert: 'pharo' isIsogramSetImplementation.
+	self assert: 'pharo' isIsogramSetImplementation equals: true.
+	
+	self assert: 'phaoro' isIsogramSetImplementation not.
+	self deny: 'phaoro' isIsogramSetImplementation.
+]
+
+{ #category : #tests }
 GramCheckerTest >> testIsograms [
 	| checker |
 	checker := GramChecker new.
