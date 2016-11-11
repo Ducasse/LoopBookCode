@@ -1,7 +1,19 @@
 Extension { #name : #String }
 
 { #category : #'*Loop-StarGram' }
-String >> detectMissingLettersFor: alphabet [
+String >> detectAllMissingLettersFor: alphabet [
+	
+	| res |
+	res := Set new. 
+	alphabet do: [ :aChar |
+		(self includes: aChar)
+			ifFalse: [ res add: aChar ]
+		].
+	^ res
+]
+
+{ #category : #'*Loop-StarGram' }
+String >> detectFirstMissingLetterFor: alphabet [
 
 	alphabet do: [ :aChar |
 		(self includes: aChar)

@@ -39,8 +39,8 @@ GramChecker >> isIsogram4: aString [
 ]
 
 { #category : #isograms }
-GramChecker >> isIsogram: aString [
-	"self new isIsogram: 'ALTRUISME'"
+GramChecker >> isIsogramBag: aString [
+	"self new isIsogramBag: 'ALTRUISME'"
 	| bag |
 	bag := Bag new. 
 	aString do: [ :each |
@@ -60,6 +60,22 @@ GramChecker >> isIsogramDictionaryImplementation: aString [
 				ifAbsent: [ dict at: each put: 1]. 
 			].
 	^ true
+]
+
+{ #category : #isograms }
+GramChecker >> isIsogramFastest: aString [
+	"self new isIsogramFastest: 'ALTRUISME'"
+
+	1 to: aString size -1 do: [ :ix |
+		(aString  
+			findString: (aString at: ix) asString 
+			startingAt: ix +1 
+			caseSensitive: false
+		) ~~ 0 ifTrue: [ ^ false ] 	
+	].
+
+	^ true
+
 ]
 
 { #category : #isograms }

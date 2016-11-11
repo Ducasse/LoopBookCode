@@ -29,33 +29,6 @@ GramCheckerTest >> isograms [
 	^  #('pharo' 'pathfinder' 'xavier' 'francois' 'lumberjack' 'altruisme' 'antipode')
 ]
 
-{ #category : #tests }
-GramCheckerTest >> test2Isograms [
-	| checker |
-	checker := GramChecker new.
-	
-	self isograms do: [ :each |
-		self assert: (checker isIsogram2: each)]
-]
-
-{ #category : #tests }
-GramCheckerTest >> test3Isograms [
-	| checker |
-	checker := GramChecker new.
-	
-	self isograms do: [ :each |
-		self assert: (checker isIsogram3: each)]
-]
-
-{ #category : #tests }
-GramCheckerTest >> test4Isograms [
-	| checker |
-	checker := GramChecker new.
-	
-	self isograms do: [ :each |
-		self assert: (checker isIsogram4: each)]
-]
-
 { #category : #'tests-isogram-string' }
 GramCheckerTest >> testAllIsogramSetImplementation [
 	
@@ -64,10 +37,19 @@ GramCheckerTest >> testAllIsogramSetImplementation [
 ]
 
 { #category : #'tests-pangram' }
+GramCheckerTest >> testDetectAllMissingLetters [
+
+	self assert: ('the quick brown fox jumps over the lzy do' detectAllMissingLettersFor: 'abcdefghijklmnopqrstuvwxyz') equals:  (Set withAll: #($a $g)).
+	self assert: ('the uick brwn fx jumps ver the lazy dg' detectAllMissingLettersFor: 'abcdefghijklmnopqrstuvwxyz') equals: #($q $o) asSet.
+	
+	
+]
+
+{ #category : #'tests-pangram' }
 GramCheckerTest >> testDetectFirstMissingLetter [
 
-	self assert: ('the quick brown fox jumps over the lzy dog' detectMissingLettersFor: 'abcdefghijklmnopqrstuvwxyz') equals: $a.
-	self assert: ('the uick brown fox jumps over the lazy dog' detectMissingLettersFor: 'abcdefghijklmnopqrstuvwxyz') equals: $q.
+	self assert: ('the quick brown fox jumps over the lzy dog' detectFirstMissingLetterFor: 'abcdefghijklmnopqrstuvwxyz') equals: $a.
+	self assert: ('the uick brown fox jumps over the lazy dog' detectFirstMissingLetterFor: 'abcdefghijklmnopqrstuvwxyz') equals: $q.
 	
 	
 ]
@@ -92,9 +74,21 @@ GramCheckerTest >> testIsPangramIn [
 GramCheckerTest >> testIsogram [
 	| checker |
 	checker := GramChecker new.
-	
-	
-	self assert: (checker isIsogram: 'ALTRUISME').
+	self assert: (checker isIsogramFastest: 'ALTRUISME').
+]
+
+{ #category : #tests }
+GramCheckerTest >> testIsogramBag [
+	| checker |
+	checker := GramChecker new.
+	self assert: (checker isIsogramBag: 'ALTRUISME').
+]
+
+{ #category : #tests }
+GramCheckerTest >> testIsogramDict [
+	| checker |
+	checker := GramChecker new.
+	self assert: (checker isIsogramDictionaryImplementation: 'ALTRUISME').
 ]
 
 { #category : #'tests-isogram-string' }
@@ -114,4 +108,22 @@ GramCheckerTest >> testIsograms [
 	
 	self isograms do: [ :each |
 		self assert: (checker isIsogram: each)]
+]
+
+{ #category : #tests }
+GramCheckerTest >> testIsogramsFastest [
+	| checker |
+	checker := GramChecker new.
+	
+	self isograms do: [ :each |
+		self assert: (checker isIsogramFastest: each)]
+]
+
+{ #category : #tests }
+GramCheckerTest >> testIsogramsSetImp [
+	| checker |
+	checker := GramChecker new.
+	
+	self isograms do: [ :each |
+		self assert: (checker isIsogramSetImplementation: each)]
 ]
