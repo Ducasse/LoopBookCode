@@ -27,7 +27,7 @@ Class {
 
 { #category : #'as yet unclassified' }
 GramCheckerTest >> isograms [
-	^ #('PHARO' 'PATHFINDER' 'XAVIER' 'LUMBERJACK' 'ALTRUISME')
+	^ #('PHARO' 'PATHFINDER' 'XAVIER' 'LUMBERJACK' 'ALTRUISME'  'ANTIPODE')
 ]
 
 { #category : #'as yet unclassified' }
