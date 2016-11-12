@@ -1,22 +1,15 @@
 "
 [ [ [ 
-[  'ALTRUISME' isIsogramSetImplementation ] bench 
- ] ] ]
+[  'ALTRUISME' isIsogramSetImplementation ] bench  '334,371 per second'
 
-[ [ [ 
-[ GramChecker new
-	isIsogram2: 'ALTRUISME'] bench  '137,937 per second'
+[  'ALTRUISME' isIsogramFastestImplementation ] bench  '546,823 per second'
+
+[  'ALTRUISME' isIsogramUsingBagImplementation ] bench  '142,432 per second'
+
+[  'ALTRUISME' isIsogramDictionaryImplementation ] bench  '147,276 per second'
 ]]]
 
-[ [ [ 
-[ GramChecker new
-	isIsogram3: 'ALTRUISME'] bench  '390,887 per second'
-]]]
 
-[ [ [ 
-[ GramChecker new
-	isIsogram4: 'ALTRUISME'] bench  '570,193 per second'
-]]]
 "
 Class {
 	#name : #GramCheckerTest,
@@ -27,6 +20,13 @@ Class {
 { #category : #data }
 GramCheckerTest >> isograms [
 	^  #('pharo' 'pathfinder' 'xavier' 'francois' 'lumberjack' 'altruisme' 'antipode')
+]
+
+{ #category : #'tests-isogram-string' }
+GramCheckerTest >> testAllIsogramFastestImplementation [
+	
+	self isograms do: [ :word |
+		self assert: word isIsogramFastestImplementation ]
 ]
 
 { #category : #'tests-isogram-string' }

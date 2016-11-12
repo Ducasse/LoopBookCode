@@ -48,8 +48,8 @@ String >> isIsogramDictionaryImplementation [
 ]
 
 { #category : #'*Loop-StarGram' }
-String >> isIsogramFatestImplementation [
-	"'ALTRUISME' isIsogramFatestImplementation"
+String >> isIsogramFastestImplementation [
+	"'ALTRUISME' isIsogramFastestImplementation"
 
 	1 to: self size -1 do: [ :ix |
 		(self  
