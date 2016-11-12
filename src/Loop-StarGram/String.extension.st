@@ -35,6 +35,34 @@ String >> isEnglishPangram [
 ]
 
 { #category : #'*Loop-StarGram' }
+String >> isIsogramBagImplementation [
+	"'ALTRUISME' isIsogramUsingBagImplementation"
+	
+	| bag |
+	bag := Bag new. 
+	self do: [ :each |
+			bag add: each. 
+			].
+	^ bag sortedCounts first key = 1
+]
+
+{ #category : #'*Loop-StarGram' }
+String >> isIsogramBitImplementation [
+	"'ALTRUISME' isIsogramBitImplementation"
+
+   | i |
+   i := 0.
+   self asLowercase do: [ :char |
+         | val |
+         val := (char  asInteger - 96).
+         (val between: 1 and: 26) ifFalse: [ ^ false ].
+         (i bitAt: val ) == 1 ifTrue: [ ^ false ].
+         i bitAt: val put: 1
+         ].
+     ^ true
+]
+
+{ #category : #'*Loop-StarGram' }
 String >> isIsogramDictionaryImplementation [
 	"'ALTRUISME' isIsogramDictionaryImplementation"
 	| letters |
@@ -45,21 +73,6 @@ String >> isIsogramDictionaryImplementation [
 				ifAbsent: [ letters at: aChar put: 1]. 
 			].
 	^ true
-]
-
-{ #category : #'*Loop-StarGram' }
-String >> isIsogramFastestImplementation [
-	"'ALTRUISME' isIsogramFastestImplementation"
-
-	1 to: self size -1 do: [ :ix |
-		(self  
-			findString: (self at: ix) asString 
-			startingAt: ix +1 
-			caseSensitive: false
-		) ~~ 0 ifTrue: [ ^ false ] 	
-	].
-	^ true
-
 ]
 
 { #category : #'*Loop-StarGram' }
@@ -74,15 +87,18 @@ String >> isIsogramSetImplementation [
 ]
 
 { #category : #'*Loop-StarGram' }
-String >> isIsogramUsingBagImplementation [
-	"'ALTRUISME' isIsogramUsingBagImplementation"
-	
-	| bag |
-	bag := Bag new. 
-	self do: [ :each |
-			bag add: each. 
-			].
-	^ bag sortedCounts first key = 1
+String >> isIsogramStringImplementation [
+	"'ALTRUISME' isIsogramFastestImplementation"
+
+	1 to: self size -1 do: [ :ix |
+		(self  
+			findString: (self at: ix) asString 
+			startingAt: ix +1 
+			caseSensitive: false
+		) ~~ 0 ifTrue: [ ^ false ] 	
+	].
+	^ true
+
 ]
 
 { #category : #'*Loop-StarGram' }

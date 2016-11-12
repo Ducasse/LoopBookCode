@@ -7,6 +7,8 @@
 [  'ALTRUISME' isIsogramUsingBagImplementation ] bench  '142,432 per second'
 
 [  'ALTRUISME' isIsogramDictionaryImplementation ] bench  '147,276 per second'
+
+[  'ALTRUISME' isIsogramBit ] bench  '1,137,976 per second'
 ]]]
 
 
@@ -26,7 +28,7 @@ GramCheckerTest >> isograms [
 GramCheckerTest >> testAllIsogramFastestImplementation [
 	
 	self isograms do: [ :word |
-		self assert: word isIsogramFastestImplementation ]
+		self assert: word isIsogramStringImplementation ]
 ]
 
 { #category : #'tests-isogram-string' }
