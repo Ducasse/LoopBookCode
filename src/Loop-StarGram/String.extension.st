@@ -63,6 +63,14 @@ String >> isIsogramBitImplementation [
 ]
 
 { #category : #'*Loop-StarGram' }
+String >> isIsogramContainCharacter: aCharacter [
+	
+ 	^ (self includes: aCharacter) 
+			ifTrue: [ false ]
+			ifFalse: [ self isIsogramRecursiveImplementation ]	
+]
+
+{ #category : #'*Loop-StarGram' }
 String >> isIsogramDictionaryImplementation [
 	"'ALTRUISME' isIsogramDictionaryImplementation"
 	| letters |
@@ -73,6 +81,16 @@ String >> isIsogramDictionaryImplementation [
 				ifAbsent: [ letters at: aChar put: 1]. 
 			].
 	^ true
+]
+
+{ #category : #'*Loop-StarGram' }
+String >> isIsogramRecursiveImplementation [
+	"'ALTRUISME' isIsogramDroppingImplementation"
+	"'ALTRUISMEA' isIsogramDroppingImplementation"
+	^ self isEmpty
+		ifTrue: [ ^ true ] 
+		ifFalse: [ self allButFirst isIsogramContainCharacter: self first ]
+ 
 ]
 
 { #category : #'*Loop-StarGram' }

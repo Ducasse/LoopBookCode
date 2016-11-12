@@ -8,8 +8,38 @@
 
 [  'ALTRUISME' isIsogramDictionaryImplementation ] bench  '147,276 per second'
 
-[  'ALTRUISME' isIsogramBit ] bench  '1,137,976 per second'
+[  'ALTRUISME' isIsogramBitImplementation ] bench  '1,137,976 per second'
 ]]]
+
+[[[
+| lines | 			
+lines := (ZnDefaultCharacterEncoder 
+  value: ZnCharacterEncoder latin1 
+  during: [
+    ZnClient new 
+      get: 'http://www.pallier.org/ressources/dicofr/liste.de.mots.francais.frgut.txt' ]) lines.
+]]]
+
+
+
+| lines bits dicts  bags strings sets |
+lines := (ZnDefaultCharacterEncoder 
+  value: ZnCharacterEncoder latin1 
+  during: [
+    ZnClient new 
+      get: 'http://www.pallier.org/ressources/dicofr/liste.de.mots.francais.frgut.txt' ]) lines.
+
+bits := lines select: #isIsogramBitImplementation. 
+dicts := lines select: #isIsogramDictionaryImplementation. 
+bags := lines select: #isIsogramBagImplementation.
+strings := lines select: #isIsogramStringImplementation.
+sets := lines select: #isIsogramSetImplementation.
+recurs := lines select: #isIsogramRecursiveImplementation.
+{ bits . dicts .  bags . strings . sets} collect: #size. #(196749 47674 47674 47668 47674)
+
+
+
+
 
 
 "
@@ -24,18 +54,59 @@ GramCheckerTest >> isograms [
 	^  #('pharo' 'pathfinder' 'xavier' 'francois' 'lumberjack' 'altruisme' 'antipode')
 ]
 
+{ #category : #data }
+GramCheckerTest >> noIsograms [
+	^  #('pharo' 'pathfinder' 'xavier' 'francois' 'lumberjack' 'altruisme' 'antipode')
+]
+
+{ #category : #data }
+GramCheckerTest >> notIsograms [
+	^  #('phaoro' 'stephane' 'idiot' 'freedom')
+]
+
 { #category : #'tests-isogram-string' }
-GramCheckerTest >> testAllIsogramFastestImplementation [
+GramCheckerTest >> testAllIsogramBagImplementation [
 	
 	self isograms do: [ :word |
-		self assert: word isIsogramStringImplementation ]
+		self assert: word isIsogramBagImplementation ].
+	self notIsograms do: [ :word |
+				self deny: word isIsogramBagImplementation ]
+]
+
+{ #category : #'tests-isogram-string' }
+GramCheckerTest >> testAllIsogramDictionaryImplementation [
+	
+	self isograms do: [ :word |
+		self assert: word isIsogramDictionaryImplementation ].
+	self notIsograms do: [ :word |
+				self deny: word isIsogramDictionaryImplementation ]
+]
+
+{ #category : #'tests-isogram-string' }
+GramCheckerTest >> testAllIsogramRecursivegImplementation [
+	
+	self isograms do: [ :word |
+		self assert: word isIsogramRecursiveImplementation ].
+	self notIsograms do: [ :word |
+		self deny: word isIsogramRecursiveImplementation ]
 ]
 
 { #category : #'tests-isogram-string' }
 GramCheckerTest >> testAllIsogramSetImplementation [
 	
 	self isograms do: [ :word |
-		self assert: word isIsogramSetImplementation ]
+		self assert: word isIsogramSetImplementation ].
+	self notIsograms do: [ :word |
+				self deny: word isIsogramSetImplementation ]
+]
+
+{ #category : #'tests-isogram-string' }
+GramCheckerTest >> testAllIsogramStringImplementation [
+	
+	self isograms do: [ :word |
+		self assert: word isIsogramStringImplementation ].
+	self notIsograms do: [ :word |
+		self deny: word isIsogramStringImplementation ]
 ]
 
 { #category : #'tests-pangram' }
