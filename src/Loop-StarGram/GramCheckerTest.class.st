@@ -40,6 +40,50 @@ recurs := lines select: #isIsogramRecursiveImplementation.
 
 
 
+isPangramIn: should probably use #asLowercase as well:
+
+'The quick brown fox jumps over a lazy dog' isEnglishPangram
+""false -- now the $t is missing, there is only $T""
+
+
+Kicking things off, here are my solutions:
+
+isPangramAllSatisfyIn: alphabet
+    ""Just a small change to the original.""
+    | lowercase |
+    lowercase := self asLowercase.
+    ^ alphabet allSatisfy: [ :aChar |
+        lowercase includes: aChar ]
+
+isPangramCopyWithoutAllIn: alphabet
+    ^ (alphabet copyWithoutAll: self asLowercase) isEmpty
+
+isPangramDifferenceIn: alphabet
+    ^ (alphabet difference: self asLowercase) isEmpty
+
+
+The performance:
+
+[ 'The quick brown fox jumps over the lazy dog' isPangramIn: 'abcdefghijklmnopqrstuvwxyz' ] bench.
+""182,096 per second (I added #asLowercase here as well)""
+
+[ 'The quick brown fox jumps over the lazy dog' isPangramAllSatisfyIn: 'abcdefghijklmnopqrstuvwxyz' ] bench.
+""159,546 per second""
+
+[ 'The quick brown fox jumps over the lazy dog' isPangramCopyWithoutAllIn: 'abcdefghijklmnopqrstuvwxyz' ] bench.
+""159,850 per second""
+
+[ 'The quick brown fox jumps over the lazy dog' isPangramDifferenceIn: 'abcdefghijklmnopqrstuvwxyz' ] bench.
+""25,400 per second""
+
+
+Michal
+
+
+
+
+
+
 
 
 "
