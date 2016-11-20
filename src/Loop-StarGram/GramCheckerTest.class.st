@@ -35,7 +35,9 @@ bags := lines select: #isIsogramBagImplementation.
 strings := lines select: #isIsogramStringImplementation.
 sets := lines select: #isIsogramSetImplementation.
 recurs := lines select: #isIsogramRecursiveImplementation.
-{ bits . dicts .  bags . strings . sets} collect: #size. #(196749 47674 47674 47668 47674)
+{ bits . dicts .  bags . strings . sets} collect: #size. 
+
+""#(23118 47674 47674 47668 47674)""
 
 
 
@@ -177,6 +179,22 @@ GramCheckerTest >> testIsEnglishPangram [
 	self assert: 'the quick brown fox jumps over the lazy dog' isEnglishPangram.
 	self assert: 'the five boxing wizards jump quickly' isEnglishPangram.
 	self deny: 'the quick brown fox jumps over the  dog' isEnglishPangram.
+]
+
+{ #category : #'tests-palindromg' }
+GramCheckerTest >> testIsPalindrome [
+
+	self assert: 'ete' isPalindrome.
+	self assert: 'kayak' isPalindrome.
+	self deny: 'etat' isPalindrome.
+]
+
+{ #category : #'tests-palindromg' }
+GramCheckerTest >> testIsPalindrome2 [
+
+	self assert: 'ete' isPalindrome2.
+	self assert: 'kayak' isPalindrome2.
+	self deny: 'etat' isPalindrome2.
 ]
 
 { #category : #'tests-pangram' }

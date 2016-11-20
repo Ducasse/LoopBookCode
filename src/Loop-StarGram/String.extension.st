@@ -57,7 +57,7 @@ String >> isIsogramBitImplementation [
          val := (char  asInteger - 96).
          (val between: 1 and: 26) ifFalse: [ ^ false ].
          (i bitAt: val ) == 1 ifTrue: [ ^ false ].
-         i bitAt: val put: 1
+         i := (i bitAt: val put: 1)
          ].
      ^ true
 ]
@@ -117,6 +117,32 @@ String >> isIsogramStringImplementation [
 	].
 	^ true
 
+]
+
+{ #category : #'*Loop-StarGram' }
+String >> isPalindrome [
+
+	self reverse with: self 
+		do: [ :rev :dir | rev = dir ifFalse: [ ^ false ] ].
+	^ true
+]
+
+{ #category : #'*Loop-StarGram' }
+String >> isPalindrome2 [
+	"Returns true whether the receiver is an palindrome.
+	'anna' isPalindrome2
+		true
+	'andna' isPalindrome2 
+		true
+	'avdna' isPalindrome2 
+		false
+	"
+	1 
+		to: self size//2 
+		do: [ :i | (self at: i) = (self at: self size + 1 - i)
+						ifFalse: [ ^false ]
+				].
+	^true
 ]
 
 { #category : #'*Loop-StarGram' }
