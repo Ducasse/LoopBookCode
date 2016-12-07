@@ -12,7 +12,7 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'location',
-		'records'
+		'measures'
 	],
 	#category : #Converter
 }
@@ -42,13 +42,13 @@ TemperatureConverter >> convertFahrenheitFrom: low to: high by: step [
 { #category : #measuring }
 TemperatureConverter >> dates [
 
-	^ self records collect: [ :each | each key asDate ]
+	^ measures collect: [ :each | each key asDate ]
 ]
 
 { #category : #initialization }
 TemperatureConverter >> initialize [
 	location := 'Nice'.
-	records := OrderedCollection new
+	measures := OrderedCollection new
 ]
 
 { #category : #accessing }
@@ -66,35 +66,29 @@ TemperatureConverter >> location: aLocation [
 { #category : #measuring }
 TemperatureConverter >> measureCelsius: aTemp [
 
-	records add: DateAndTime now -> aTemp
+	measures add: DateAndTime now -> aTemp
 ]
 
 { #category : #measuring }
 TemperatureConverter >> measureCount [
 
-	^ records size
+	^ measures size
 ]
 
 { #category : #measuring }
 TemperatureConverter >> measureFahrenheit: aTemp [
 
-	records add: DateAndTime now -> (self convertFahrenheit: aTemp)
-]
-
-{ #category : #accessing }
-TemperatureConverter >> records [
-
-	^ records
+	measures add: DateAndTime now -> (self convertFahrenheit: aTemp)
 ]
 
 { #category : #measuring }
 TemperatureConverter >> temperatures [
 
-	^ self records collect: [ :each | each value ]
+	^ measures collect: [ :each | each value ]
 ]
 
 { #category : #measuring }
 TemperatureConverter >> times [
 
-	^ self records collect: [ :each | each key ]
+	^ measures collect: [ :each | each key ]
 ]
