@@ -1,3 +1,9 @@
+"
+I'm a game.
+I'm characterized by an id (because we can have two times the same game., a title and a kind (Ps2, Ps3).
+
+I have optional information such as stars
+"
 Class {
 	#name : #GameItem,
 	#superclass : #Object,
@@ -8,7 +14,10 @@ Class {
 		'grade',
 		'stars',
 		'isCollectorEdition',
-		'star'
+		'paidPrice',
+		'id',
+		'language',
+		'zone'
 	],
 	#category : #'Loop-GameCollection'
 }
@@ -25,6 +34,26 @@ GameItem class >> exampleKlonoa [
 ]
 
 { #category : #constants }
+GameItem >> EU [
+	zone := #EU
+]
+
+{ #category : #constants }
+GameItem >> JP [
+	zone := #JP
+]
+
+{ #category : #constants }
+GameItem >> US [
+	zone := #US
+]
+
+{ #category : #constants }
+GameItem >> english [
+	language := #english
+]
+
+{ #category : #constants }
 GameItem >> fiveStar [
 	
 	star := 5
@@ -37,8 +66,18 @@ GameItem >> fourStar [
 ]
 
 { #category : #constants }
+GameItem >> french [
+	language := #french
+]
+
+{ #category : #constants }
 GameItem >> gameboy [
 	kind := #gameboy
+]
+
+{ #category : #constants }
+GameItem >> german [
+	language := #german
 ]
 
 { #category : #accessing }
@@ -64,8 +103,10 @@ GameItem >> hasDoc: aBoolean [
 { #category : #initialization }
 GameItem >> initialize [
 	super initialize.
+	id := self nextId.
 	hasDoc := true.
 	isCollectorEdition := true.
+	
 	
 ]
 
@@ -79,10 +120,28 @@ GameItem >> isCollectorEdition: aBoolean [
 	isCollectorEdition := aBoolean
 ]
 
+{ #category : #initialization }
+GameItem >> nextId [
+
+	
+]
+
 { #category : #constants }
 GameItem >> oneStar [
 	
 	star := 1
+]
+
+{ #category : #accessing }
+GameItem >> paidPrice [
+
+	^ paidPrice
+]
+
+{ #category : #accessing }
+GameItem >> paidPrice: anInteger [
+
+	paidPrice := anInteger
 ]
 
 { #category : #constants }
@@ -96,9 +155,26 @@ GameItem >> ps3 [
 ]
 
 { #category : #constants }
+GameItem >> spanish [
+	language := #spanish
+]
+
+{ #category : #constants }
 GameItem >> threeStar [
 	
 	star := 3
+]
+
+{ #category : #accessing }
+GameItem >> title [
+
+	^ title
+]
+
+{ #category : #accessing }
+GameItem >> title: aString [
+
+	title := aString
 ]
 
 { #category : #constants }
