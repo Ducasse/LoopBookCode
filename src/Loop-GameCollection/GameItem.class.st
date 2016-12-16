@@ -22,15 +22,34 @@ Class {
 	#category : #'Loop-GameCollection'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #example }
 GameItem class >> exampleKlonoa [
-
+	<sampleInstance>
 	^ self new 	
 		title: 'Klonoa';
 		ps2;
 		threeStar;
 		grade: '(16/15)';
-		paid: 1
+		paidPrice: 1
+]
+
+{ #category : #example }
+GameItem class >> exampleWildArm [
+	<sampleInstance>
+	^ self new 	
+		title: 'Wild Arm';
+		ps2;
+		threeStar;
+		grade: '(16/15)';
+		paidPrice: 1
+]
+
+{ #category : #neojson }
+GameItem class >> neoJsonMapping: aMapper [
+
+	aMapper for: self do: [ :mapping |
+		mapping mapInstVars: 
+ #(#title #kind #hasDoc #grade #stars #isCollectorEdition #paidPrice #language #zone)]
 ]
 
 { #category : #constants }
@@ -100,10 +119,15 @@ GameItem >> hasDoc: aBoolean [
 	hasDoc := aBoolean
 ]
 
+{ #category : #accessing }
+GameItem >> id: anId [
+	"an internal id. Such id should not be serialized: a same game can have different id when loaded or reloaded. The only constraint is that internally we just want to have two different ids.
+	May be this is not necessary since objects are different by construction."
+]
+
 { #category : #initialization }
 GameItem >> initialize [
 	super initialize.
-	id := self nextId.
 	hasDoc := true.
 	isCollectorEdition := true.
 	
@@ -120,10 +144,10 @@ GameItem >> isCollectorEdition: aBoolean [
 	isCollectorEdition := aBoolean
 ]
 
-{ #category : #initialization }
-GameItem >> nextId [
+{ #category : #accessing }
+GameItem >> kind [
 
-	
+	^ kind
 ]
 
 { #category : #constants }
@@ -142,6 +166,14 @@ GameItem >> paidPrice [
 GameItem >> paidPrice: anInteger [
 
 	paidPrice := anInteger
+]
+
+{ #category : #printing }
+GameItem >> printOn: aStream [
+
+	aStream 
+		nextPutAll: self title;
+		nextPutAll: '(', self kind asString ,')'
 ]
 
 { #category : #constants }
