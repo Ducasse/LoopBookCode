@@ -16,6 +16,17 @@ GameCollectorTest >> testCreatingFromSton [
 ]
 
 { #category : #tests }
+GameCollectorTest >> testCreatingFromStonMultipleInstances [
+	| read |
+	read := (STONReader
+		on:
+			'[GameItem{#title:''Klonoa'',#kind:#PS2,#hasDoc:true,#grade:''(16/15)'',#stars:3,#isCollectorEdition:true,#paidPrice:1},GameItem{#title:''Wild Arm'',#kind:#PS2,#hasDoc:true,#grade:''(16/15)'',#stars:3,#isCollectorEdition:true,#paidPrice:1}]'
+				readStream) next.
+	self assert: (read first sameAs: GameItem exampleKlonoa).
+	self assert: (read second sameAs: GameItem exampleWildArm)
+]
+
+{ #category : #tests }
 GameCollectorTest >> testFindGame [
 	
 	| collector |
