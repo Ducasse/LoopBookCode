@@ -15,6 +15,12 @@ Class {
 }
 
 { #category : #example }
+GameCollector class >> addGames [
+	"self addGames"
+	^ self current addGame: (GameItem exampleKlonoa); addGame: (GameItem exampleWildArm)
+]
+
+{ #category : #example }
 GameCollector class >> addKlonoa [
 	"self addKlonoa"
 	^ self current addGame: (GameItem exampleKlonoa)
@@ -64,4 +70,10 @@ GameCollector >> nextId [
 	
 	currentId := currentId + 1.
 	^ currentId 
+]
+
+{ #category : #adding }
+GameCollector >> saveInto: stream [
+
+	
 ]

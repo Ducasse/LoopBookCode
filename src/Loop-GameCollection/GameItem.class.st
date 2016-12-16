@@ -75,13 +75,13 @@ GameItem >> english [
 { #category : #constants }
 GameItem >> fiveStar [
 	
-	star := 5
+	stars := 5
 ]
 
 { #category : #constants }
 GameItem >> fourStar [
 	
-	star := 4
+	stars := 4
 ]
 
 { #category : #constants }
@@ -153,7 +153,7 @@ GameItem >> kind [
 { #category : #constants }
 GameItem >> oneStar [
 	
-	star := 1
+	stars := 1
 ]
 
 { #category : #accessing }
@@ -186,6 +186,14 @@ GameItem >> ps3 [
 	kind := #PS3
 ]
 
+{ #category : #testing }
+GameItem >> sameAs: anotherGame [
+	#(#title #kind #hasDoc #grade #stars #isCollectorEdition #paidPrice #id #language #zone)
+		do:
+			[ :each | (self instVarNamed: each) = (anotherGame instVarNamed: each) ifFalse: [^ false]].
+	^ true
+]
+
 { #category : #constants }
 GameItem >> spanish [
 	language := #spanish
@@ -194,7 +202,7 @@ GameItem >> spanish [
 { #category : #constants }
 GameItem >> threeStar [
 	
-	star := 3
+	stars := 3
 ]
 
 { #category : #accessing }
@@ -212,5 +220,5 @@ GameItem >> title: aString [
 { #category : #constants }
 GameItem >> twoStar [
 	
-	star := 2
+	stars := 2
 ]

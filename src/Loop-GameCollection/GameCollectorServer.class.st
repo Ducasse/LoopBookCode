@@ -36,6 +36,16 @@ GameCollectorServer >> games: aRequest [
 ]
 
 { #category : #initialize }
+GameCollectorServer >> htmlListFor: aList [
+
+	^ (String
+			streamContents: [ :s | 
+					aList
+						do: [ :each | s nextPutAll: each printString ]
+						separatedBy: [ s nextPutAll: '<br>' ] ])
+]
+
+{ #category : #initialize }
 GameCollectorServer >> initializePort: anInteger [
 	collector := GameCollector current.
 	teapot := Teapot configure: { 
@@ -51,9 +61,19 @@ GameCollectorServer >> initializePort: anInteger [
 { #category : #initialize }
 GameCollectorServer >> registerRoutes [
 	teapot
-		GET: '/' -> '<h1>My game collection</h1>'; output: #html;
-		GET: '/games' -> self games; 
-		GET: '/find/<title>' -> [ :req | self games select: [ :each | each title match: '*', (req at: #title), '*' ]  ].
+		GET: '/' -> '<h1>My game collection</h1>';
+		output: #html;
+		GET: '/games' -> self games;
+		GET:
+			'/findDetails/<title>'
+				-> [ :req | collector findMatchingTitle: (req at: #title) ];
+		output: #json;
+		GET:
+			'find/<title>'
+				-> [ :req | 
+					TeaResponse ok
+						body: (self htmlListFor: (collector findMatchingTitle: (req at: #title))) ];
+		output: #html
 ]
 
 { #category : #'start/stop' }
