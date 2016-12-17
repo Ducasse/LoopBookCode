@@ -128,10 +128,9 @@ GameItem >> id: anId [
 { #category : #initialization }
 GameItem >> initialize [
 	super initialize.
-	hasDoc := true.
-	isCollectorEdition := true.
-	
-	
+	hasDoc := false.
+	isCollectorEdition := false.
+	self ps2.
 ]
 
 { #category : #accessing }

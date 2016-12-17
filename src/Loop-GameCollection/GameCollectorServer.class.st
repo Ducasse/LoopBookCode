@@ -24,14 +24,47 @@ GameCollectorServer class >> serveOn: portNumber [
 ]
 
 { #category : #initialize }
-GameCollectorServer >> games [
-
-	^ collector games
+GameCollectorServer >> create: aRequest [
+	collector addGame: (GameItem new title: (aRequest at: #input)).
+	^ ZnResponse new
+		statusLine: ZnStatusLine ok;
+		entity: (ZnEntity html: 'Created!');
+		yourself
 ]
 
 { #category : #initialize }
-GameCollectorServer >> games: aRequest [
+GameCollectorServer >> edit: request [
+	| title page |
+	title := 'Enter a title'.
+	page := ZnHtmlOutputStream
+		streamContents: [ :html | 
+			html
+				page: 'Create game named'
+				do: [ html
+						tag: #form
+						attributes:
+							#(#action 'create' 'accept-charset' 'utf-8' #method #GET)
+						do: [ html
+								str: 'Title';
+								space;
+								tag: #input
+									attributes:
+									{#type.
+									#input.
+									#name.
+									#input.
+									#value.
+									title};
+								space;
+								tag: #input attributes: #(#type #submit) ] ] ].
+	^ ZnResponse new
+		statusLine: ZnStatusLine ok;
+		entity: (ZnEntity html: page);
+		yourself
+]
 
+{ #category : #initialize }
+GameCollectorServer >> games [
 	^ collector games
 ]
 
@@ -63,17 +96,21 @@ GameCollectorServer >> registerRoutes [
 	teapot
 		GET: '/' -> '<h1>My game collection</h1>';
 		output: #html;
-		GET: '/games' -> self games;
+		GET: '/games' -> [:reg | (self htmlListFor: self games)];
+		output: #html;
 		GET:
-			'/findDetails/<title>'
-				-> [ :req | collector findMatchingTitle: (req at: #title) ];
+			'/findDetails/<title>' -> [ :req | collector findMatchingTitle: (req at: #title) ];
 		output: #json;
 		GET:
-			'find/<title>'
+			'/find/<title>'
 				-> [ :req | 
 					TeaResponse ok
-						body: (self htmlListFor: (collector findMatchingTitle: (req at: #title))) ];
-		output: #html
+						body:
+							(self
+								htmlListFor: (collector findMatchingTitle: (req at: #title))) ];
+		output: #html;
+		GET: '/add' -> [ :req | self edit: req ];
+		GET: '/create' -> (Send message: #create: to: self)
 ]
 
 { #category : #'start/stop' }

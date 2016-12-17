@@ -1,5 +1,10 @@
 "
 Simple holder of a game collection
+
+Next point 
+	'/Users/sven/Desktop/bounds.ston' asReference
+   fileStreamDo: [ :str |
+      STON put: World bounds onStreamPretty: str ].
 "
 Class {
 	#name : #GameCollector,

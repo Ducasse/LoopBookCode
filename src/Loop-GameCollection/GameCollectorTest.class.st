@@ -47,3 +47,46 @@ GameCollectorTest >> testSton [
 	
 	self assert: (STON toString: {GameItem exampleKlonoa . GameItem exampleWildArm}) equals: '[GameItem{#title:''Klonoa'',#kind:#PS2,#hasDoc:true,#grade:''(16/15)'',#stars:3,#isCollectorEdition:true,#paidPrice:1},GameItem{#title:''Wild Arm'',#kind:#PS2,#hasDoc:true,#grade:''(16/15)'',#stars:3,#isCollectorEdition:true,#paidPrice:1}]'
 ]
+
+{ #category : #tests }
+GameCollectorTest >> testStonPretty [
+	self
+		assert: (STON toStringPretty: GameItem exampleKlonoa)
+		equals:
+			'GameItem {
+	#title : ''Klonoa'',
+	#kind : #PS2,
+	#hasDoc : true,
+	#grade : ''(16/15)'',
+	#stars : 3,
+	#isCollectorEdition : true,
+	#paidPrice : 1
+}'.
+	self
+		assert:
+			(STON
+				toStringPretty:
+					{GameItem exampleKlonoa.
+					GameItem exampleWildArm})
+		equals:
+			 '[
+	GameItem {
+		#title : ''Klonoa'',
+		#kind : #PS2,
+		#hasDoc : true,
+		#grade : ''(16/15)'',
+		#stars : 3,
+		#isCollectorEdition : true,
+		#paidPrice : 1
+	},
+	GameItem {
+		#title : ''Wild Arm'',
+		#kind : #PS2,
+		#hasDoc : true,
+		#grade : ''(16/15)'',
+		#stars : 3,
+		#isCollectorEdition : true,
+		#paidPrice : 1
+	}
+]'
+]
