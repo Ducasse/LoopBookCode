@@ -18,3 +18,9 @@ MultiplicationTest >> testEvaluateNegated [
 
 	self assert: (EMultiplication fiveTimesThree) evaluate negated equals: -15
 ]
+
+{ #category : #tests }
+MultiplicationTest >> testPrinting [
+
+	self assert: (EMultiplication fiveTimesThree) negated printString equals:  '- ( 5 * 3 )'
+]

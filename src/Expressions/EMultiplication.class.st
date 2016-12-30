@@ -14,7 +14,7 @@ EMultiplication class >> fiveTimesThree [
 	| ep1 ep2 |
 	ep1 := (EConstant new value: 5).
 	ep2 := (EConstant new value: 3).
-   ^ EMultiplication new right: ep1; left: ep2
+   ^ EMultiplication new left: ep1 ; right: ep2 
 ]
 
 { #category : #evaluation }
@@ -28,6 +28,17 @@ EMultiplication >> left: anEConstant [
 	left := anEConstant
 	
 	
+]
+
+{ #category : #printing }
+EMultiplication >> printOn: aStream [
+	
+	aStream 
+		nextPutAll: '( ';
+		nextPutAll: left printString; 
+		nextPutAll: ' * ';
+		nextPutAll: right printString;
+		nextPutAll: ' )'
 ]
 
 { #category : #evaluation }

@@ -13,6 +13,13 @@ ConstantTest >> testEvaluate [
 ]
 
 { #category : #tests }
+ConstantTest >> testPrinting [
+	
+	self assert:(EConstant new value: 5) printString equals: '5'.
+	
+]
+
+{ #category : #tests }
 ConstantTest >> testValue [ 
 	
 	self assert:(EConstant new value: 5) value equals:5.

@@ -23,3 +23,9 @@ AdditionTest >> testEvaluateWithNegation [
 	self assert: (EAddition new right: ep1; left: ep2) evaluate equals: -2
 	
 ]
+
+{ #category : #tests }
+AdditionTest >> testPrinting [
+
+	self assert: (EAddition fivePlusThree) negated printString equals:  '- ( 5 + 3 )'
+]

@@ -19,6 +19,12 @@ EConstant >> evaluate [
 	^ value
 ]
 
+{ #category : #printing }
+EConstant >> printOn: aStream [
+
+	aStream nextPutAll: value printString
+]
+
 { #category : #accessing }
 EConstant >> value [ 
 

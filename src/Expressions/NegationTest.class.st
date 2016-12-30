@@ -44,3 +44,16 @@ NegationTest >> testNegationNegated [
 	
 
 ]
+
+{ #category : #tests }
+NegationTest >> testPrinting [
+	
+	| exp |
+	exp := (EConstant new value: 6) negated.
+	self assert: exp printString = '- 6'. 
+	self assert: exp negated printString = '6'. 
+
+	
+	
+
+]

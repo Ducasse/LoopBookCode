@@ -29,3 +29,12 @@ ENegation >> negated [
 
 	^ expression.
 ]
+
+{ #category : #printing }
+ENegation >> printOn: aStream [
+
+	aStream nextPut: $-.
+	aStream nextPut: Character space. 
+	"aStream nextPutAll: '- '"
+	aStream nextPutAll: expression printString
+]
