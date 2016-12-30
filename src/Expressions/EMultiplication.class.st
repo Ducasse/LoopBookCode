@@ -31,12 +31,6 @@ EMultiplication >> left: anEConstant [
 ]
 
 { #category : #evaluation }
-EMultiplication >> negated [
-
-	^ ENegation new expression: self
-]
-
-{ #category : #evaluation }
 EMultiplication >> right: anEConstant [
 	right := anEConstant
 	

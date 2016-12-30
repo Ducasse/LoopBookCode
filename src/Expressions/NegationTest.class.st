@@ -21,3 +21,26 @@ NegationTest >> testNegated [
 	
 
 ]
+
+{ #category : #tests }
+NegationTest >> testNegatedStructureIsCorrect [
+	
+	| exp |
+	exp := (EConstant new value: 6).
+	self assert: exp negated class = ENegation. 
+	self assert: exp negated negated equals: exp.
+
+	
+	
+
+]
+
+{ #category : #tests }
+NegationTest >> testNegationNegated [
+	
+	self assert:(EConstant new value: 6) negated negated evaluate equals: 6.
+	
+	
+	
+
+]

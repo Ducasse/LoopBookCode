@@ -13,6 +13,12 @@ ENegation >> evaluate [
 	^ expression evaluate negated.
 ]
 
+{ #category : #evaluation }
+ENegation >> expression [
+	
+	^ expression.
+]
+
 { #category : #accessing }
 ENegation >> expression: anEConstant [ 
 	expression := anEConstant
@@ -21,5 +27,5 @@ ENegation >> expression: anEConstant [
 { #category : #evaluation }
 ENegation >> negated [
 
-	^ ENegation new expression: self
+	^ expression.
 ]

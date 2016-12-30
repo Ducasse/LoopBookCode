@@ -19,12 +19,6 @@ EConstant >> evaluate [
 	^ value
 ]
 
-{ #category : #evaluation }
-EConstant >> negated [
-
-	^ ENegation new expression: self
-]
-
 { #category : #accessing }
 EConstant >> value [ 
 
