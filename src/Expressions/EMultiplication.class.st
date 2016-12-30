@@ -17,6 +17,12 @@ EMultiplication class >> fiveTimesThree [
    ^ EMultiplication new left: ep1 ; right: ep2 
 ]
 
+{ #category : #'instance creation' }
+EMultiplication class >> left: anInteger right: anInteger2 [
+
+	^ self new left: anInteger ; right: anInteger2
+]
+
 { #category : #evaluation }
 EMultiplication >> evaluate [
 	

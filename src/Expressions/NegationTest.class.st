@@ -13,6 +13,14 @@ NegationTest >> testEvaluate [
 ]
 
 { #category : #tests }
+NegationTest >> testEvaluateWithClassCreationMessage [
+	
+	self assert:(ENegation expression: (EConstant value: 5)) evaluate equals: -5
+	
+
+]
+
+{ #category : #tests }
 NegationTest >> testNegated [
 	
 	self assert:(EConstant new value: 6) negated evaluate equals: -6.

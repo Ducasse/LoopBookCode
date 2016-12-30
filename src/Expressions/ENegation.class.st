@@ -7,6 +7,11 @@ Class {
 	#category : #Expressions
 }
 
+{ #category : #'instance creation' }
+ENegation class >> expression: anInteger [
+	^ self new expression: anInteger
+]
+
 { #category : #evaluation }
 ENegation >> evaluate [
 	

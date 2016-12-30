@@ -27,3 +27,12 @@ ConstantTest >> testValue [
 	
 
 ]
+
+{ #category : #tests }
+ConstantTest >> testValueFromClass [
+	
+	self assert:(EConstant value: 5) value equals: 5.
+
+	
+
+]

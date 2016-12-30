@@ -13,6 +13,12 @@ EConstant class >> constant5 [
 	^ self new value: 5 
 ]
 
+{ #category : #'instance creation' }
+EConstant class >> value: anInteger [
+	
+	^ self new value: anInteger 
+]
+
 { #category : #evaluation }
 EConstant >> evaluate [
 	

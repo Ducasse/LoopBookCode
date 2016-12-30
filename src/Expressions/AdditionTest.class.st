@@ -15,6 +15,16 @@ AdditionTest >> testEvaluate [
 ]
 
 { #category : #tests }
+AdditionTest >> testEvaluateWithClassCreationMessage [
+
+	| ep1 ep2 |
+	ep1 := (EConstant new value: 5).
+	ep2 := (EConstant new value: 3).
+	self assert: (EAddition left: ep1 right: ep2) evaluate equals: 8
+	
+]
+
+{ #category : #tests }
 AdditionTest >> testEvaluateWithNegation [
 
 	| ep1 ep2 |
