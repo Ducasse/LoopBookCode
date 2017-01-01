@@ -16,7 +16,7 @@ EMultiplicationTest >> testEvaluate [
 { #category : #tests }
 EMultiplicationTest >> testEvaluateNegated [
 
-	self assert: (EMultiplication fiveTimesThree) evaluate negated equals: -15
+	self assert: (EMultiplication fiveTimesThree) negated evaluate  equals: -15
 ]
 
 { #category : #tests }
