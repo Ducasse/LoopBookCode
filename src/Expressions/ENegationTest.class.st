@@ -1,11 +1,11 @@
 Class {
-	#name : #NegationTest,
+	#name : #ENegationTest,
 	#superclass : #TestCase,
 	#category : #Expressions
 }
 
 { #category : #tests }
-NegationTest >> testEvaluate [ 
+ENegationTest >> testEvaluate [ 
 	
 	self assert:(ENegation new expression: (EConstant new value:5)) evaluate equals: -5
 	
@@ -13,7 +13,7 @@ NegationTest >> testEvaluate [
 ]
 
 { #category : #tests }
-NegationTest >> testEvaluateWithClassCreationMessage [
+ENegationTest >> testEvaluateWithClassCreationMessage [
 	
 	self assert:(ENegation expression: (EConstant value: 5)) evaluate equals: -5
 	
@@ -21,7 +21,7 @@ NegationTest >> testEvaluateWithClassCreationMessage [
 ]
 
 { #category : #tests }
-NegationTest >> testNegated [
+ENegationTest >> testNegated [
 	
 	self assert:(EConstant new value: 6) negated evaluate equals: -6.
 	self assert:(EAddition fivePlusThree) negated evaluate equals: -8
@@ -31,7 +31,7 @@ NegationTest >> testNegated [
 ]
 
 { #category : #tests }
-NegationTest >> testNegatedStructureIsCorrect [
+ENegationTest >> testNegatedStructureIsCorrect [
 	
 	| exp |
 	exp := (EConstant new value: 6).
@@ -44,7 +44,7 @@ NegationTest >> testNegatedStructureIsCorrect [
 ]
 
 { #category : #tests }
-NegationTest >> testNegationNegated [
+ENegationTest >> testNegationNegated [
 	
 	self assert:(EConstant new value: 6) negated negated evaluate equals: 6.
 	
@@ -54,7 +54,7 @@ NegationTest >> testNegationNegated [
 ]
 
 { #category : #tests }
-NegationTest >> testPrinting [
+ENegationTest >> testPrinting [
 	
 	| exp |
 	exp := (EConstant new value: 6) negated.

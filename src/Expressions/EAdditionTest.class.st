@@ -1,11 +1,11 @@
 Class {
-	#name : #AdditionTest,
+	#name : #EAdditionTest,
 	#superclass : #TestCase,
 	#category : #Expressions
 }
 
 { #category : #tests }
-AdditionTest >> testEvaluate [
+EAdditionTest >> testEvaluate [
 
 	| ep1 ep2 |
 	ep1 := (EConstant new value: 5).
@@ -15,7 +15,7 @@ AdditionTest >> testEvaluate [
 ]
 
 { #category : #tests }
-AdditionTest >> testEvaluateWithClassCreationMessage [
+EAdditionTest >> testEvaluateWithClassCreationMessage [
 
 	| ep1 ep2 |
 	ep1 := (EConstant new value: 5).
@@ -25,7 +25,7 @@ AdditionTest >> testEvaluateWithClassCreationMessage [
 ]
 
 { #category : #tests }
-AdditionTest >> testEvaluateWithNegation [
+EAdditionTest >> testEvaluateWithNegation [
 
 	| ep1 ep2 |
 	ep1 := ENegation new expression: (EConstant new value:5).
@@ -35,7 +35,7 @@ AdditionTest >> testEvaluateWithNegation [
 ]
 
 { #category : #tests }
-AdditionTest >> testPrinting [
+EAdditionTest >> testPrinting [
 
 	self assert: (EAddition fivePlusThree) negated printString equals:  '- ( 5 + 3 )'
 ]

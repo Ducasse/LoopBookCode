@@ -1,11 +1,11 @@
 Class {
-	#name : #MultiplicationTest,
+	#name : #EMultiplicationTest,
 	#superclass : #TestCase,
 	#category : #Expressions
 }
 
 { #category : #tests }
-MultiplicationTest >> testEvaluate [
+EMultiplicationTest >> testEvaluate [
 
 	| ep1 ep2 |
 	ep1 := (EConstant new value: 5).
@@ -14,13 +14,13 @@ MultiplicationTest >> testEvaluate [
 ]
 
 { #category : #tests }
-MultiplicationTest >> testEvaluateNegated [
+EMultiplicationTest >> testEvaluateNegated [
 
 	self assert: (EMultiplication fiveTimesThree) evaluate negated equals: -15
 ]
 
 { #category : #tests }
-MultiplicationTest >> testEvaluateWithClassCreationMessage [
+EMultiplicationTest >> testEvaluateWithClassCreationMessage [
 
 	| ep1 ep2 |
 	ep1 := (EConstant new value: 5).
@@ -29,7 +29,7 @@ MultiplicationTest >> testEvaluateWithClassCreationMessage [
 ]
 
 { #category : #tests }
-MultiplicationTest >> testPrinting [
+EMultiplicationTest >> testPrinting [
 
 	self assert: (EMultiplication fiveTimesThree) negated printString equals:  '- ( 5 * 3 )'
 ]

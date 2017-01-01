@@ -1,11 +1,11 @@
 Class {
-	#name : #ConstantTest,
+	#name : #EConstantTest,
 	#superclass : #TestCase,
 	#category : #Expressions
 }
 
 { #category : #tests }
-ConstantTest >> testEvaluate [ 
+EConstantTest >> testEvaluate [ 
 	
 	self assert:(EConstant new value: 5) evaluate equals: 5
 	
@@ -13,14 +13,14 @@ ConstantTest >> testEvaluate [
 ]
 
 { #category : #tests }
-ConstantTest >> testPrinting [
+EConstantTest >> testPrinting [
 	
 	self assert:(EConstant new value: 5) printString equals: '5'.
 	
 ]
 
 { #category : #tests }
-ConstantTest >> testValue [ 
+EConstantTest >> testValue [ 
 	
 	self assert:(EConstant new value: 5) value equals:5.
 	self assert:(EConstant constant5) value equals:5
@@ -29,7 +29,7 @@ ConstantTest >> testValue [
 ]
 
 { #category : #tests }
-ConstantTest >> testValueFromClass [
+EConstantTest >> testValueFromClass [
 	
 	self assert:(EConstant value: 5) value equals: 5.
 

@@ -1,17 +1,17 @@
 Class {
-	#name : #DivisionTest,
+	#name : #EDivisionTest,
 	#superclass : #TestCase,
 	#category : #Expressions
 }
 
 { #category : #tests }
-DivisionTest >> testEvaluateNoError [
+EDivisionTest >> testEvaluateNoError [
 
 	self assert: (EDivision new numerator: (EConstant value: 4) ; denominator: (EConstant value: 2)) evaluate equals: 2
 ]
 
 { #category : #tests }
-DivisionTest >> testEvaluateWithError [
+EDivisionTest >> testEvaluateWithError [
 
 	self 
 		should: [ (EDivision new numerator: (EConstant value: 4) ; denominator: (EConstant value: 0)) evaluate ]
