@@ -26,7 +26,7 @@ ENegation >> expression: anEConstant [
 { #category : #evaluation }
 ENegation >> negated [
 
-	^ expression.
+	^ expression
 ]
 
 { #category : #printing }
