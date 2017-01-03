@@ -37,12 +37,11 @@ EAddition >> left: anEConstant [
 { #category : #printing }
 EAddition >> printOn: aStream [
 
-	aStream 
-		nextPutAll: '( ';
-		nextPutAll: left printString; 
-		nextPutAll: ' + ';
-		nextPutAll: right printString;
-		nextPutAll: ' )'
+	aStream nextPutAll: '( '.
+	left printOn: aStream. 
+	aStream nextPutAll: ' + '.
+	right printOn: aStream.
+	aStream nextPutAll: ' )'
 ]
 
 { #category : #accessing }

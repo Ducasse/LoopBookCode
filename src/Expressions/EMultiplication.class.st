@@ -10,7 +10,7 @@ Class {
 
 { #category : #examples }
 EMultiplication class >> fiveTimesThree [
-
+	<sampleInstance>
 	| ep1 ep2 |
 	ep1 := (EConstant new value: 5).
 	ep2 := (EConstant new value: 3).
@@ -39,12 +39,11 @@ EMultiplication >> left: anEConstant [
 { #category : #printing }
 EMultiplication >> printOn: aStream [
 	
-	aStream 
-		nextPutAll: '( ';
-		nextPutAll: left printString; 
-		nextPutAll: ' * ';
-		nextPutAll: right printString;
-		nextPutAll: ' )'
+	aStream nextPutAll: '( '.
+	left printOn: aStream. 
+	aStream nextPutAll: ' * '.
+	right printOn: aStream.
+	aStream nextPutAll: ' )'
 ]
 
 { #category : #evaluation }

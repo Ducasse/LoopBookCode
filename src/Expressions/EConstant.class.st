@@ -9,7 +9,7 @@ Class {
 
 { #category : #examples }
 EConstant class >> constant5 [
-	<sampleData>
+	<sampleInstance>
 	^ self new value: 5 
 ]
 
