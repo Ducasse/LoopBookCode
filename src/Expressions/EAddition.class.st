@@ -1,10 +1,6 @@
 Class {
 	#name : #EAddition,
-	#superclass : #EExpression,
-	#instVars : [
-		'right',
-		'left'
-	],
+	#superclass : #EBinaryExpression,
 	#category : #Expressions
 }
 
@@ -26,25 +22,5 @@ EAddition class >> left: anInteger right: anInteger2 [
 { #category : #evaluation }
 EAddition >> evaluate [
 
-	^  right evaluate +  left evaluate
-]
-
-{ #category : #accessing }
-EAddition >> left: anEConstant [ 
-	left := anEConstant
-]
-
-{ #category : #printing }
-EAddition >> printOn: aStream [
-
-	aStream nextPutAll: '( '.
-	left printOn: aStream. 
-	aStream nextPutAll: ' + '.
-	right printOn: aStream.
-	aStream nextPutAll: ' )'
-]
-
-{ #category : #accessing }
-EAddition >> right: anEConstant [ 
-	right := anEConstant
+	^  right evaluate + left evaluate
 ]

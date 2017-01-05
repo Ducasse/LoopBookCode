@@ -1,10 +1,6 @@
 Class {
 	#name : #EMultiplication,
-	#superclass : #EExpression,
-	#instVars : [
-		'left',
-		'right'
-	],
+	#superclass : #EBinaryExpression,
 	#category : #Expressions
 }
 
@@ -29,25 +25,7 @@ EMultiplication >> evaluate [
 	^ left evaluate * right evaluate
 ]
 
-{ #category : #evaluation }
-EMultiplication >> left: anEConstant [
-	left := anEConstant
-	
-	
-]
-
 { #category : #printing }
-EMultiplication >> printOn: aStream [
-	
-	aStream nextPutAll: '( '.
-	left printOn: aStream. 
-	aStream nextPutAll: ' * '.
-	right printOn: aStream.
-	aStream nextPutAll: ' )'
-]
-
-{ #category : #evaluation }
-EMultiplication >> right: anEConstant [
-	right := anEConstant
-	
+EMultiplication >> operatorString [
+	^ ' * '
 ]
