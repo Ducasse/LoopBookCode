@@ -20,10 +20,11 @@ EDivision >> denominator: anInteger [
 
 { #category : #evaluation }
 EDivision >> evaluateWith: anObject [
-	|denom|
-	denom := denominator evaluateWith: anObject.
-	denom isZero ifTrue: [ EZeroDenominator signal ].
-	^ (numerator evaluateWith: anObject) / denom 
+	| denom |
+	denom := denominator evaluateWith: Dictionary new.
+	denom isZero
+		ifTrue: [ EZeroDenominator signal ].
+	^ (numerator evaluateWith: Dictionary new) / denom
 ]
 
 { #category : #accessing }

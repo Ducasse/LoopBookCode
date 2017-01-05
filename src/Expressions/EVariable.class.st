@@ -2,8 +2,7 @@ Class {
 	#name : #EVariable,
 	#superclass : #EExpression,
 	#instVars : [
-		'id',
-		'bindings'
+		'id'
 	],
 	#category : #Expressions
 }

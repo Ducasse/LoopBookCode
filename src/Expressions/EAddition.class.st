@@ -21,6 +21,5 @@ EAddition class >> left: anInteger right: anInteger2 [
 
 { #category : #evaluation }
 EAddition >> evaluateWith: anObject [
-
-	^  (right evaluateWith: anObject) + (left evaluateWith: anObject)
+	^ (right evaluateWith: anObject) + (left evaluateWith: anObject)
 ]

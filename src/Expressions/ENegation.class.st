@@ -14,8 +14,7 @@ ENegation class >> expression: anInteger [
 
 { #category : #evaluation }
 ENegation >> evaluateWith: anObject [
-	
-	^ (expression evaluateWith: anObject) negated.
+	^ (expression evaluateWith: anObject) negated
 ]
 
 { #category : #accessing }
