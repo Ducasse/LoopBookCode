@@ -5,29 +5,19 @@ Class {
 }
 
 { #category : #tests }
-ENegationTest >> testEvaluate [ 
-	
-	self assert:(ENegation new expression: (EConstant new value:5)) evaluate equals: -5
-	
-
+ENegationTest >> testEvaluate [
+	self assert: ((ENegation new expression: (EConstant new value: 5)) evaluateWith: Dictionary new) equals: -5
 ]
 
 { #category : #tests }
 ENegationTest >> testEvaluateWithClassCreationMessage [
-	
-	self assert:(ENegation expression: (EConstant value: 5)) evaluate equals: -5
-	
-
+	self assert: ((ENegation expression: (EConstant value: 5)) evaluateWith: Dictionary new) equals: -5
 ]
 
 { #category : #tests }
 ENegationTest >> testNegated [
-	
-	self assert:(EConstant new value: 6) negated evaluate equals: -6.
-	self assert:(EAddition fivePlusThree) negated evaluate equals: -8
-	
-	
-
+	self assert: ((EConstant new value: 6) negated evaluateWith: Dictionary new) equals: -6.
+	self assert: (EAddition fivePlusThree negated evaluateWith: Dictionary new) equals: -8
 ]
 
 { #category : #tests }
@@ -45,12 +35,7 @@ ENegationTest >> testNegatedStructureIsCorrect [
 
 { #category : #tests }
 ENegationTest >> testNegationNegated [
-	
-	self assert:(EConstant new value: 6) negated negated evaluate equals: 6.
-	
-	
-	
-
+	self assert: ((EConstant new value: 6) negated negated evaluateWith: Dictionary new) equals: 6
 ]
 
 { #category : #tests }

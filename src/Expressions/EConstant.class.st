@@ -20,7 +20,7 @@ EConstant class >> value: anInteger [
 ]
 
 { #category : #evaluation }
-EConstant >> evaluate [
+EConstant >> evaluateWith: anObject [
 	
 	^ value
 ]

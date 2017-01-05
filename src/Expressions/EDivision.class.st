@@ -19,11 +19,11 @@ EDivision >> denominator: anInteger [
 ]
 
 { #category : #evaluation }
-EDivision >> evaluate [
+EDivision >> evaluateWith: anObject [
 	|denom|
-	denom := denominator evaluate.
+	denom := denominator evaluateWith: anObject.
 	denom isZero ifTrue: [ EZeroDenominator signal ].
-	^ numerator evaluate / denom 
+	^ (numerator evaluateWith: anObject) / denom 
 ]
 
 { #category : #accessing }

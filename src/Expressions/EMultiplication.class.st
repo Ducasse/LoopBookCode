@@ -20,9 +20,9 @@ EMultiplication class >> left: anInteger right: anInteger2 [
 ]
 
 { #category : #evaluation }
-EMultiplication >> evaluate [
+EMultiplication >> evaluateWith: anObject [
 	
-	^ left evaluate * right evaluate
+	^ (left evaluateWith: anObject) * (right evaluateWith: anObject)
 ]
 
 { #category : #printing }
