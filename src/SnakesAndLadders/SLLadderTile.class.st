@@ -14,5 +14,5 @@ SLLadderTile >> isLadder [
 SLLadderTile >> printOnInside: aStream [ 
 	
 	super printOnInside: aStream.
-	aStream nextPutAll: '->', targetPosition printString
+	aStream nextPutAll: '->', targetTile position printString
 ]

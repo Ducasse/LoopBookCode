@@ -55,11 +55,12 @@ SLGame >> moveCurrentPlayer: aNumber [
 	| p targetTile |
 	p := self currentPlayer.
 	targetTile := self newPlaceFor: p atDistance: aNumber.
-	
+	(self placeFor: p) leave: p.
+	targetTile enter: p. 
  
 ]
 
-{ #category : #playing }
+{ #category : #tiles }
 SLGame >> newPlaceFor: aPlayer atDistance: aNumber [
 
 	^ (self tileAt: aPlayer position + aNumber) 
@@ -67,7 +68,7 @@ SLGame >> newPlaceFor: aPlayer atDistance: aNumber [
 	
 ]
 
-{ #category : #playing }
+{ #category : #tiles }
 SLGame >> placeFor: aPlayer [ 
 
 	^ self tileAt: aPlayer position
@@ -103,13 +104,21 @@ SLGame >> setEndTile [
 { #category : #initialization }
 SLGame >> setLadderFrom: aSourcePosition to: aTargetPosition [
 
-	tiles at: aSourcePosition put: (SLLadderTile new position: aSourcePosition ; to: aTargetPosition ;yourself)
+	tiles 
+		at: aSourcePosition 
+		put: (SLLadderTile new 
+					position: aSourcePosition ; 
+					to: (tiles at: aTargetPosition) ; yourself)
 ]
 
 { #category : #initialization }
 SLGame >> setSnakeFrom: aSourcePosition to: aTargetPosition [
 
-	tiles at: aSourcePosition put: (SLSnakeTile new position: aSourcePosition; to: aTargetPosition)
+	tiles 
+		at: aSourcePosition 
+		put: (SLSnakeTile new 
+					position: aSourcePosition; 
+					to: (tiles at: aTargetPosition) ; yourself)
 ]
 
 { #category : #initialization }

@@ -12,7 +12,7 @@ SLSnakeTile >> isSnake [
 
 { #category : #testing }
 SLSnakeTile >> printOnInside: aStream [ 
-	aStream nextPutAll: targetPosition printString,  '<-'.
+	aStream nextPutAll: targetTile position printString,  '<-'.
 	super printOnInside: aStream.
 	
 ]

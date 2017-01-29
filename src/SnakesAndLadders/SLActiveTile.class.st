@@ -2,13 +2,19 @@ Class {
 	#name : #SLActiveTile,
 	#superclass : #SLPositionedTile,
 	#instVars : [
-		'targetPosition'
+		'targetTile'
 	],
 	#category : #SnakesAndLadders
 }
 
 { #category : #accessing }
-SLActiveTile >> to: aTargetPosition [
+SLActiveTile >> enter: aPlayer [
+	"Instead of entering the current tile, the player is in fact entering the target one."
+	self target enter: aPlayer
+]
 
-	targetPosition := aTargetPosition
+{ #category : #accessing }
+SLActiveTile >> to: aTile [
+
+	targetTile := aTile
 ]

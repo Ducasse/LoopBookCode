@@ -7,10 +7,10 @@ Class {
 	#category : #SnakesAndLadders
 }
 
-{ #category : #'as yet unclassified' }
-SLPositionedTile >> enterTile [
+{ #category : #'in/out' }
+SLPositionedTile >> enter: aPlayer [
 
-	
+	aPlayer position: position.
 ]
 
 { #category : #testing }
@@ -29,6 +29,12 @@ SLPositionedTile >> isSnake [
 SLPositionedTile >> isSnaker [
 
 	^ false
+]
+
+{ #category : #'in/out' }
+SLPositionedTile >> leave: aPlayer [
+	"subclasses may redefine me to notify, log or whatever the fact that a player is leaving its current position"
+	
 ]
 
 { #category : #accessing }
