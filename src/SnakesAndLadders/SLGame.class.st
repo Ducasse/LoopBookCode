@@ -1,5 +1,5 @@
 Class {
-	#name : #SLBoard,
+	#name : #SLGame,
 	#superclass : #Object,
 	#instVars : [
 		'tiles',
@@ -10,14 +10,14 @@ Class {
 }
 
 { #category : #adding }
-SLBoard >> addPlayer: aPlayer [
+SLGame >> addPlayer: aPlayer [
 	players add: aPlayer. 
 	aPlayer position: 1.
 	(tiles at: 1) addPlayer: aPlayer
 ]
 
 { #category : #playing }
-SLBoard >> currentPlayer [
+SLGame >> currentPlayer [
 
 	| rest |
 	rest := (turns \\ players size). 
@@ -28,14 +28,14 @@ SLBoard >> currentPlayer [
 ]
 
 { #category : #initialization }
-SLBoard >> initialize [
+SLGame >> initialize [
 
 	players := OrderedCollection new. 
 	turns := 0.
 ]
 
 { #category : #initialization }
-SLBoard >> initializeDefaultTiles [
+SLGame >> initializeDefaultTiles [
 
 	1 to: tiles size do: [ :i | 
 			tiles at: i put: (SLPositionedTile new position: i) ].
@@ -44,69 +44,95 @@ SLBoard >> initializeDefaultTiles [
 ]
 
 { #category : #testing }
-SLBoard >> isOver [
+SLGame >> isOver [
 
 	^ players anySatisfy: [ :each | each position = tiles size ]
 ]
 
 { #category : #playing }
-SLBoard >> play [
+SLGame >> moveCurrentPlayer: aNumber [
+
+	| p targetTile |
+	p := self currentPlayer.
+	targetTile := self newPlaceFor: p atDistance: aNumber.
+	
+ 
+]
+
+{ #category : #playing }
+SLGame >> newPlaceFor: aPlayer atDistance: aNumber [
+
+	^ (self tileAt: aPlayer position + aNumber) 
+	
+	
+]
+
+{ #category : #playing }
+SLGame >> placeFor: aPlayer [ 
+
+	^ self tileAt: aPlayer position
+	
+	
+]
+
+{ #category : #playing }
+SLGame >> play [
 
 
 	[ self isOver not ] whileTrue: [
 		| roll |
 		turns := turns + 1.
 		roll := 6 atRandom. 
-		self moveCurrentPlayer: roll
-	] 
+		self moveCurrentPlayer: roll 
+		] 
 ]
 
 { #category : #printing }
-SLBoard >> printOn: aStream [
+SLGame >> printOn: aStream [
 
 	tiles do: [ :aTile | 
 		aStream << aTile printString ]
 ]
 
 { #category : #initialization }
-SLBoard >> setEndTile [
+SLGame >> setEndTile [
 
 	tiles at: tiles size put: (SLEndTile new position: tiles size)
 ]
 
 { #category : #initialization }
-SLBoard >> setLadderFrom: aSourcePosition to: aTargetPosition [
+SLGame >> setLadderFrom: aSourcePosition to: aTargetPosition [
 
 	tiles at: aSourcePosition put: (SLLadderTile new position: aSourcePosition ; to: aTargetPosition ;yourself)
 ]
 
 { #category : #initialization }
-SLBoard >> setSnakeFrom: aSourcePosition to: aTargetPosition [
+SLGame >> setSnakeFrom: aSourcePosition to: aTargetPosition [
 
 	tiles at: aSourcePosition put: (SLSnakeTile new position: aSourcePosition; to: aTargetPosition)
 ]
 
 { #category : #initialization }
-SLBoard >> setStartTile [
+SLGame >> setStartTile [
 
-	tiles at: 1 put: (SLStartTile new position: 1)
+	tiles at: 1 put: SLStartTile new
 ]
 
 { #category : #accessing }
-SLBoard >> tileAt: aNumber [
+SLGame >> tileAt: aNumber [
 
 	^ tiles at: aNumber
 ]
 
 { #category : #accessing }
-SLBoard >> tileNumber: aNumber [
+SLGame >> tileNumber: aNumber [
 
 	tiles := Array new: aNumber. 
 	self initializeDefaultTiles. 
 ]
 
 { #category : #private }
-SLBoard >> turns: aNumber [
+SLGame >> turns: aNumber [
 
 	turns := aNumber	
 ]
