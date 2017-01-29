@@ -1,6 +1,6 @@
 Class {
 	#name : #SLPassiveTile,
-	#superclass : #SLPositionedTile,
+	#superclass : #SLAbstractTile,
 	#instVars : [
 		'players'
 	],

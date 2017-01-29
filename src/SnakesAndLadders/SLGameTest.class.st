@@ -70,6 +70,22 @@ SLGameTest >> testPlaceForPlayer [
 ]
 
 { #category : #tests }
+SLGameTest >> testPlayOneStep [
+	
+	| jill jack board |
+	board := SLGame new tileNumber: 12.
+	jack := SLPlayer new name: 'Jack'.
+	jill := SLPlayer new name: 'Jill'.
+	board addPlayer: jill. "first player" 
+	board addPlayer: jack. 
+	self assert: jill position equals: 1. 
+	board playOneStepWithRoll: 3.
+	self assert: jill position equals: 4.
+	self assert: (board tileAt: 1) players size equals: 1. 
+	self assert: ((board tileAt: 4) players includes: jill). 
+]
+
+{ #category : #tests }
 SLGameTest >> testPlayerAtStart [
 
 	| board jill |

@@ -1,6 +1,6 @@
 Class {
 	#name : #SLActiveTile,
-	#superclass : #SLPositionedTile,
+	#superclass : #SLAbstractTile,
 	#instVars : [
 		'targetTile'
 	],

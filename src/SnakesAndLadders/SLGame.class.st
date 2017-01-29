@@ -38,7 +38,7 @@ SLGame >> initialize [
 SLGame >> initializeDefaultTiles [
 
 	1 to: tiles size do: [ :i | 
-			tiles at: i put: (SLPositionedTile new position: i) ].
+			tiles at: i put: (SLPassiveTile new position: i) ].
 	self setStartTile.
 	self setEndTile.
 ]
@@ -79,13 +79,19 @@ SLGame >> placeFor: aPlayer [
 { #category : #playing }
 SLGame >> play [
 
-
+	Transcript show: self; cr.
 	[ self isOver not ] whileTrue: [
-		| roll |
-		turns := turns + 1.
-		roll := 6 atRandom. 
-		self moveCurrentPlayer: roll 
-		] 
+		self playOneStepWithRoll: 6 atRandom ] 
+]
+
+{ #category : #playing }
+SLGame >> playOneStepWithRoll: aNumber [
+
+	turns := turns + 1.
+	Transcript show: (self currentPlayer) printString, 'got a: ', aNumber printString. 
+	self moveCurrentPlayer: aNumber.
+	Transcript show: self; cr.
+		
 ]
 
 { #category : #printing }
