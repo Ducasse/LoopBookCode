@@ -23,6 +23,13 @@ MFFile >> kind [
 	^ 'file'
 ]
 
+{ #category : #printing }
+MFFile >> printOn: aStream [
+	parent isNil ifFalse: [ 
+		parent printOn: aStream ].
+	aStream << name
+]
+
 { #category : #'typing/selecting keys' }
 MFFile >> search: aString [
 	^ '*', aString, '*' match: contents

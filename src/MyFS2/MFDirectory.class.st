@@ -31,8 +31,10 @@ MFDirectory >> kind [
 
 { #category : #printing }
 MFDirectory >> printOn: aStream [
-	super printOn: aStream. 
-	aStream << '/'
+	parent isNil ifFalse: [ 
+		parent printOn: aStream ].
+	aStream << name.
+	aStream nextPutAll: '/'
 ]
 
 { #category : #'typing/selecting keys' }

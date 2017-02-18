@@ -11,7 +11,7 @@ MFFileTest >> testPrinting [
 	dOldComics := MFDirectory new name: 'oldcomics'.
 	dOldComics addElement: el1. 
 	self assert: el1 printString equals:
-'/oldcomics/astroboy'
+'oldcomics/astroboy'
 ]
 
 { #category : #tests }
