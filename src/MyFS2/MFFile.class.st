@@ -1,9 +1,7 @@
 Class {
 	#name : #MFFile,
-	#superclass : #Object,
+	#superclass : #MFElement,
 	#instVars : [
-		'parent',
-		'name',
 		'contents'
 	],
 	#category : #MyFS2
@@ -19,26 +17,15 @@ MFFile >> initialize [
 	contents := ''
 ]
 
-{ #category : #accessing }
-MFFile >> name: aString [
-	name := aString
+{ #category : #description }
+MFFile >> kind [ 
+
+	^ 'file'
 ]
 
-{ #category : #accessing }
-MFFile >> parent [
-	^ parent
-]
-
-{ #category : #accessing }
-MFFile >> parent: aFile [
-	parent := aFile
-]
-
-{ #category : #printing }
-MFFile >> printOn: aStream [
-	parent isNil ifFalse: [ 
-		parent printOn: aStream ].
-	aStream << name
+{ #category : #'typing/selecting keys' }
+MFFile >> search: aString [
+	^ '*', aString, '*' match: contents
 ]
 
 { #category : #size }

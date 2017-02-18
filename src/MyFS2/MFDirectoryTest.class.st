@@ -28,8 +28,19 @@ MFDirectoryTest >> testPrinting [
 	el1 := MFDirectory new name: 'comics'.
 	el2 := MFDirectory new name: 'oldcomics'.
 	el1 addElement: el2.
-	self assert: el1 printString equals: '/comics/'.
-	self assert: el2 printString equals: '/comics/oldcomics/'
+	self assert: el1 printString equals: 'comics/'.
+	self assert: el2 printString equals: 'comics/oldcomics/'
+]
+
+{ #category : #tests }
+MFDirectoryTest >> testSearch [ 
+	| p el1 el2 |
+	p := MFDirectory new name: 'comics'.
+	el1 := MFFile new name: 'babar'; contents: 'Babar et Celeste'.
+	p addElement: el1.
+	el2 := MFFile new name: 'astroboy'; contents: 'super cool robot'.
+	p addElement: el2.
+	self assert: ((p search: 'Ba') includes: el1)
 ]
 
 { #category : #tests }

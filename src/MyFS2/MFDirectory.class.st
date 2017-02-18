@@ -1,9 +1,7 @@
 Class {
 	#name : #MFDirectory,
-	#superclass : #Object,
+	#superclass : #MFElement,
 	#instVars : [
-		'parent',
-		'name',
 		'files'
 	],
 	#category : #MyFS2
@@ -25,28 +23,21 @@ MFDirectory >> initialize [
 	files := OrderedCollection new
 ]
 
-{ #category : #initialization }
-MFDirectory >> name: aString [
-	name := aString
-]
+{ #category : #describe }
+MFDirectory >> kind [ 
 
-{ #category : #initialization }
-MFDirectory >> parent [
-	^ parent
-]
-
-{ #category : #initialization }
-MFDirectory >> parent: aFile [
-	parent := aFile
+	^ 'directory'
 ]
 
 { #category : #printing }
 MFDirectory >> printOn: aStream [
-	parent isNil 
-		ifTrue: [ aStream << '/' ]
-		ifFalse: [ parent printOn: aStream ].
-	aStream << name.
+	super printOn: aStream. 
 	aStream << '/'
+]
+
+{ #category : #'typing/selecting keys' }
+MFDirectory >> search: aString [
+	^ files select: [ :eachFile | eachFile search: aString ]
 ]
 
 { #category : #size }
