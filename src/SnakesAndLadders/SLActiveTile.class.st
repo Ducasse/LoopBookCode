@@ -10,7 +10,7 @@ Class {
 { #category : #accessing }
 SLActiveTile >> enter: aPlayer [
 	"Instead of entering the current tile, the player is in fact entering the target one."
-	self target enter: aPlayer
+	targetTile enter: aPlayer
 ]
 
 { #category : #accessing }

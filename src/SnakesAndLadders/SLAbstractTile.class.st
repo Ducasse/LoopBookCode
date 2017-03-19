@@ -25,12 +25,6 @@ SLAbstractTile >> isSnake [
 	^ false
 ]
 
-{ #category : #testing }
-SLAbstractTile >> isSnaker [
-
-	^ false
-]
-
 { #category : #'in/out' }
 SLAbstractTile >> leave: aPlayer [
 	"subclasses may redefine me to notify, log or whatever the fact that a player is leaving its current position"
