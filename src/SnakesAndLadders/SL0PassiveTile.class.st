@@ -1,6 +1,6 @@
 Class {
-	#name : #SLPassiveTile,
-	#superclass : #SLAbstractTile,
+	#name : #SL0PassiveTile,
+	#superclass : #SL0AbstractTile,
 	#instVars : [
 		'players'
 	],
@@ -8,40 +8,40 @@ Class {
 }
 
 { #category : #adding }
-SLPassiveTile >> addPlayer: aPlayer [
+SL0PassiveTile >> addPlayer: aPlayer [
 
 	players add: aPlayer.
 ]
 
 { #category : #'in/out' }
-SLPassiveTile >> enter: aPlayer [
+SL0PassiveTile >> enter: aPlayer [
 	super enter: aPlayer. 
 	self addPlayer: aPlayer
 ]
 
 { #category : #initialization }
-SLPassiveTile >> initialize [
+SL0PassiveTile >> initialize [
 	players := OrderedCollection new. 
 ]
 
 { #category : #'in/out' }
-SLPassiveTile >> leave: aPlayer [
+SL0PassiveTile >> leave: aPlayer [
 	super leave: aPlayer.
 	self removePlayer: aPlayer
 ]
 
 { #category : #accessing }
-SLPassiveTile >> players [
+SL0PassiveTile >> players [
 	^ players
 ]
 
 { #category : #accessing }
-SLPassiveTile >> players: anObject [
+SL0PassiveTile >> players: anObject [
 	players := anObject
 ]
 
 { #category : #printing }
-SLPassiveTile >> printOnInside: aStream [
+SL0PassiveTile >> printOnInside: aStream [
 
 	super printOnInside: aStream. 
 	players isNotEmpty ifTrue: [ players do: [ :aPlayer | aStream << aPlayer printString ]].
@@ -49,7 +49,7 @@ SLPassiveTile >> printOnInside: aStream [
 ]
 
 { #category : #adding }
-SLPassiveTile >> removePlayer: aPlayer [
+SL0PassiveTile >> removePlayer: aPlayer [
 
 	players remove: aPlayer.
 ]

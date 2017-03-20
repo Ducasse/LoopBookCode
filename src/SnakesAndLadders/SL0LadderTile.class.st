@@ -1,17 +1,17 @@
 Class {
-	#name : #SLLadderTile,
-	#superclass : #SLActiveTile,
+	#name : #SL0LadderTile,
+	#superclass : #SL0ActiveTile,
 	#category : #SnakesAndLadders
 }
 
 { #category : #testing }
-SLLadderTile >> isLadder [
+SL0LadderTile >> isLadder [
 
 	^ true
 ]
 
 { #category : #printing }
-SLLadderTile >> printOnInside: aStream [ 
+SL0LadderTile >> printOnInside: aStream [ 
 	
 	super printOnInside: aStream.
 	aStream nextPutAll: '->', targetTile position printString

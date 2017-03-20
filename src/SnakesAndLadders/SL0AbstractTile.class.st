@@ -1,5 +1,5 @@
 Class {
-	#name : #SLAbstractTile,
+	#name : #SL0AbstractTile,
 	#superclass : #Object,
 	#instVars : [
 		'position'
@@ -8,41 +8,41 @@ Class {
 }
 
 { #category : #'in/out' }
-SLAbstractTile >> enter: aPlayer [
+SL0AbstractTile >> enter: aPlayer [
 
 	aPlayer position: position.
 ]
 
 { #category : #testing }
-SLAbstractTile >> isLadder [ 
+SL0AbstractTile >> isLadder [ 
 
 	^ false
 ]
 
 { #category : #testing }
-SLAbstractTile >> isSnake [
+SL0AbstractTile >> isSnake [
 
 	^ false
 ]
 
 { #category : #'in/out' }
-SLAbstractTile >> leave: aPlayer [
+SL0AbstractTile >> leave: aPlayer [
 	"subclasses may redefine me to notify, log or whatever the fact that a player is leaving its current position"
 	
 ]
 
 { #category : #accessing }
-SLAbstractTile >> position [
+SL0AbstractTile >> position [
 	^ position
 ]
 
 { #category : #accessing }
-SLAbstractTile >> position: anObject [
+SL0AbstractTile >> position: anObject [
 	position := anObject
 ]
 
 { #category : #printing }
-SLAbstractTile >> printOn: aStream [
+SL0AbstractTile >> printOn: aStream [
 
 	aStream << '['.
 	self printOnInside: aStream.
@@ -50,7 +50,7 @@ SLAbstractTile >> printOn: aStream [
 ]
 
 { #category : #printing }
-SLAbstractTile >> printOnInside: aStream [
+SL0AbstractTile >> printOnInside: aStream [
 
 
 	aStream << position printString.

@@ -1,11 +1,11 @@
 Class {
-	#name : #SLStartTile,
-	#superclass : #SLPassiveTile,
+	#name : #SL0StartTile,
+	#superclass : #SL0PassiveTile,
 	#category : #SnakesAndLadders
 }
 
 { #category : #initialization }
-SLStartTile >> initialize [
+SL0StartTile >> initialize [
 	super initialize.
 	position := 1
 ]

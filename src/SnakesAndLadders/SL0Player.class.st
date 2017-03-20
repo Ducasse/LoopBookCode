@@ -1,5 +1,5 @@
 Class {
-	#name : #SLPlayer,
+	#name : #SL0Player,
 	#superclass : #Object,
 	#instVars : [
 		'name',
@@ -9,27 +9,27 @@ Class {
 }
 
 { #category : #accessing }
-SLPlayer >> name [
+SL0Player >> name [
 	^ name
 ]
 
 { #category : #accessing }
-SLPlayer >> name: anObject [
+SL0Player >> name: anObject [
 	name := anObject
 ]
 
 { #category : #accessing }
-SLPlayer >> position [
+SL0Player >> position [
 	^ position
 ]
 
 { #category : #accessing }
-SLPlayer >> position: anObject [
+SL0Player >> position: anObject [
 	position := anObject
 ]
 
 { #category : #printing }
-SLPlayer >> printOn: aStream [
+SL0Player >> printOn: aStream [
 
 	aStream nextPutAll: '<', name , '>'
 ]
