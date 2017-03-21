@@ -7,14 +7,23 @@ Class {
 	#category : #SnakesAndLadders
 }
 
+{ #category : #printing }
+SLGame >> printOn: aStream [
+
+	tiles do: [ :aTile | 
+		aStream << aTile printString ]
+]
+
 { #category : #accessing }
 SLGame >> tileNumber [
 	
-	^ tiles
+	^ tiles size
 ]
 
 { #category : #accessing }
 SLGame >> tileNumber: aNumber [
 
-	tiles := aNumber
+	tiles := Array new: aNumber. 
+	1 to:	tiles size do: [ :i | 
+		tiles at: i put: (SLTile new position: i) ].
 ]
