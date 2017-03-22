@@ -2,10 +2,27 @@ Class {
 	#name : #SLTile,
 	#superclass : #Object,
 	#instVars : [
-		'position'
+		'position',
+		'players'
 	],
 	#category : #SnakesAndLadders
 }
+
+{ #category : #adding }
+SLTile >> addPlayer: aPlayer [	
+	players add: aPlayer
+]
+
+{ #category : #initialization }
+SLTile >> initialize [
+	players := OrderedCollection new. 
+]
+
+{ #category : #accessing }
+SLTile >> players [ 
+
+	^ players
+]
 
 { #category : #accessing }
 SLTile >> position: anInteger [ 

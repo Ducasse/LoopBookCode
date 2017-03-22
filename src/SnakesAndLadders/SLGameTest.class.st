@@ -4,7 +4,7 @@ Class {
 	#category : #SnakesAndLadders
 }
 
-{ #category : #tests }
+{ #category : #'tests start' }
 SLGameTest >> testCheckingSimpleGame [
 
 	| game |
@@ -12,7 +12,17 @@ SLGameTest >> testCheckingSimpleGame [
 	self assert: game tileNumber equals: 12
 ]
 
-{ #category : #tests }
+{ #category : #'test player introduction' }
+SLGameTest >> testPlayerAtStart [
+
+	| game jill |
+	game := SLGame new tileNumber: 12.
+	jill := SLPlayer new name: 'Jill'.
+	game addPlayer: jill.
+	self assert: ((game tileAt: 1) players includes: jill).
+]
+
+{ #category : #'tests start' }
 SLGameTest >> testPrintingSimpleGame [
 
 	| game |
@@ -20,7 +30,7 @@ SLGameTest >> testPrintingSimpleGame [
 	self assert: game printString equals: '[1][2][3][4][5][6][7][8][9][10][11][12]'
 ]
 
-{ #category : #tests }
+{ #category : #'tests start' }
 SLGameTest >> testTileAt [
 
 	| game |

@@ -7,6 +7,12 @@ Class {
 	#category : #SnakesAndLadders
 }
 
+{ #category : #accessing }
+SLGame >> addPlayer: aPlayer [
+	
+	(tiles at: 1) addPlayer: aPlayer
+]
+
 { #category : #printing }
 SLGame >> printOn: aStream [
 
