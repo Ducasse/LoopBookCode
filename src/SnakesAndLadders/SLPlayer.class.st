@@ -11,3 +11,9 @@ Class {
 SLPlayer >> name: aString [ 
 	name := aString
 ]
+
+{ #category : #printing }
+SLPlayer >> printOn: aStream [
+
+	aStream << '<' << name << '>'
+]

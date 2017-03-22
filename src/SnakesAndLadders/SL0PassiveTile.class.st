@@ -44,7 +44,7 @@ SL0PassiveTile >> players: anObject [
 SL0PassiveTile >> printOnInside: aStream [
 
 	super printOnInside: aStream. 
-	players isNotEmpty ifTrue: [ players do: [ :aPlayer | aStream << aPlayer printString ]].
+	players isNotEmpty ifTrue: [ players do: [ :aPlayer | aPlayer printOn: aStream ]].
 	
 ]
 

@@ -30,6 +30,32 @@ SLGameTest >> testPrintingSimpleGame [
 	self assert: game printString equals: '[1][2][3][4][5][6][7][8][9][10][11][12]'
 ]
 
+{ #category : #'test player introduction' }
+SLGameTest >> testPrintingSimpleGameWithPlayers [
+
+	| game jill jack |
+	game := SLGame new 
+		tileNumber: 12.
+	jack := SLPlayer new name: 'Jack'.
+	jill := SLPlayer new name: 'Jill'.
+	game addPlayer: jill. "first player" 
+	game addPlayer: jack. 
+	self assert: game printString equals: '[1<Jill><Jack>][2][3][4][5][6][7][8][9][10][11][12]'
+]
+
+{ #category : #'test player introduction' }
+SLGameTest >> testSeveralPlayersAtStart [
+
+	| game jill jack |
+	game := SLGame new tileNumber: 12.
+	jill := SLPlayer new name: 'Jill'.
+	jack := SLPlayer new name: 'Jack'.
+	game addPlayer: jill.
+	game addPlayer: jack.
+	self assert: ((game tileAt: 1) players includes: jill).
+	self assert: ((game tileAt: 1) players includes: jack).
+]
+
 { #category : #'tests start' }
 SLGameTest >> testTileAt [
 

@@ -34,5 +34,6 @@ SLTile >> printOn: aStream [
 
 	aStream << '['.
 	aStream << position printString.
+	players do: [ :aPlayer | aPlayer printOn: aStream ].
 	aStream << ']'
 ]

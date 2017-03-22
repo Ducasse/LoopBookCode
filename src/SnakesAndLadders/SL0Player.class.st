@@ -31,5 +31,5 @@ SL0Player >> position: anObject [
 { #category : #printing }
 SL0Player >> printOn: aStream [
 
-	aStream nextPutAll: '<', name , '>'
+	aStream << '<' << name << '>'
 ]
