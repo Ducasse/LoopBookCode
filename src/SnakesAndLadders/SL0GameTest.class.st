@@ -72,7 +72,7 @@ SL0GameTest >> testIsOver [
 	self assert: game isOver.
 ]
 
-{ #category : #tests }
+{ #category : #'test player turn' }
 SL0GameTest >> testPlayOneStep [
 	
 	| jill jack game |
@@ -88,7 +88,7 @@ SL0GameTest >> testPlayOneStep [
 	self assert: ((game tileAt: 4) players includes: jill). 
 ]
 
-{ #category : #tests }
+{ #category : #'test player turn' }
 SL0GameTest >> testPlayOneStepOnALadder [
 	
 	| jill jack game |
@@ -119,7 +119,7 @@ SL0GameTest >> testPlayOneStepOnASnake [
 	self assert: ((game tileAt: 5) players includes: jill). 
 ]
 
-{ #category : #tests }
+{ #category : #'test player turn' }
 SL0GameTest >> testPlayOneStepOnExactFinish [
 	
 	| jill jack game |
@@ -137,7 +137,7 @@ SL0GameTest >> testPlayOneStepOnExactFinish [
 	self assert: game isOver.
 ]
 
-{ #category : #tests }
+{ #category : #'test player turn' }
 SL0GameTest >> testPlayOneStepOnInexactFinish [
 	
 	| jill jack game |
@@ -159,7 +159,7 @@ SL0GameTest >> testPlayOneStepOnInexactFinish [
 	self deny: game isOver.
 ]
 
-{ #category : #tests }
+{ #category : #'test player turn' }
 SL0GameTest >> testPlayTwoSteps [
 	
 	| jill jack game |
@@ -198,7 +198,7 @@ SL0GameTest >> testPlayerAtStart [
 	self assert: ((game tileAt: 1) players includes: jill).
 ]
 
-{ #category : #tests }
+{ #category : #'tests done' }
 SL0GameTest >> testPrintingSimpleGame [
 
 	| game |
@@ -219,7 +219,7 @@ SL0GameTest >> testPrintingSimpleGameWithPlayers [
 	self assert: game printString equals: '[1<Jill><Jack>][2][3][4][5][6][7][8][9][10][11][12]'
 ]
 
-{ #category : #tests }
+{ #category : #'tests done' }
 SL0GameTest >> testTileAt [
 
 	| game |

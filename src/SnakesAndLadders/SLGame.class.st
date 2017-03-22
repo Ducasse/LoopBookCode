@@ -15,6 +15,12 @@ SLGame >> printOn: aStream [
 ]
 
 { #category : #accessing }
+SLGame >> tileAt: aNumber [
+
+	^ tiles at: aNumber
+]
+
+{ #category : #accessing }
 SLGame >> tileNumber [
 	
 	^ tiles size
