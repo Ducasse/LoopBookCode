@@ -25,6 +25,11 @@ SLTile >> players [
 ]
 
 { #category : #accessing }
+SLTile >> position [
+	^ position
+]
+
+{ #category : #accessing }
 SLTile >> position: anInteger [ 
 	position := anInteger
 ]

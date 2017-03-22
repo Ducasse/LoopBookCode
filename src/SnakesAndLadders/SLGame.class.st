@@ -9,7 +9,7 @@ Class {
 
 { #category : #accessing }
 SLGame >> addPlayer: aPlayer [
-	
+	aPlayer position: 1.
 	(tiles at: 1) addPlayer: aPlayer
 ]
 
@@ -24,6 +24,11 @@ SLGame >> printOn: aStream [
 SLGame >> tileAt: aNumber [
 
 	^ tiles at: aNumber
+]
+
+{ #category : #query }
+SLGame >> tileFor: aSLPlayer atDistance: anInteger [ 
+	^ tiles at: aSLPlayer position + anInteger
 ]
 
 { #category : #accessing }

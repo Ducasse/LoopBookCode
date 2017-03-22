@@ -22,6 +22,16 @@ SLGameTest >> testPlayerAtStart [
 	self assert: ((game tileAt: 1) players includes: jill).
 ]
 
+{ #category : #'test player introduction' }
+SLGameTest >> testPlayerAtStartIsAtPosition1 [
+
+	| game jill |
+	game := SLGame new tileNumber: 12.
+	jill := SLPlayer new name: 'Jill'.
+	game addPlayer: jill.
+	self assert: jill position equals: 1.
+]
+
 { #category : #'tests start' }
 SLGameTest >> testPrintingSimpleGame [
 
@@ -62,4 +72,14 @@ SLGameTest >> testTileAt [
 	| game |
 	game := SLGame new tileNumber: 12.
 	self assert: (game tileAt: 6) printString equals: '[6]'
+]
+
+{ #category : #'tests moving' }
+SLGameTest >> testTileForAtDistance [
+	
+	| jill game |
+	game := SLGame new tileNumber: 12.
+	jill := SLPlayer new name: 'Jill'.
+	game addPlayer: jill. 
+	self assert: (game tileFor: jill atDistance: 4) position equals: 5.
 ]

@@ -184,7 +184,7 @@ SL0GameTest >> testPlayTwoSteps [
 
 ]
 
-{ #category : #tests }
+{ #category : #'tests done' }
 SL0GameTest >> testPlayerAtStart [
 
 	| game jill |
@@ -206,7 +206,7 @@ SL0GameTest >> testPrintingSimpleGame [
 	self assert: game printString equals: '[1][2][3][4][5][6][7][8][9][10][11][12]'
 ]
 
-{ #category : #tests }
+{ #category : #'tests done' }
 SL0GameTest >> testPrintingSimpleGameWithPlayers [
 
 	| game jill jack |

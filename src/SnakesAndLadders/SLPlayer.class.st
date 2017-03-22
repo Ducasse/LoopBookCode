@@ -2,7 +2,8 @@ Class {
 	#name : #SLPlayer,
 	#superclass : #Object,
 	#instVars : [
-		'name'
+		'name',
+		'position'
 	],
 	#category : #SnakesAndLadders
 }
@@ -10,6 +11,16 @@ Class {
 { #category : #accessing }
 SLPlayer >> name: aString [ 
 	name := aString
+]
+
+{ #category : #accessing }
+SLPlayer >> position [
+	^ position
+]
+
+{ #category : #accessing }
+SLPlayer >> position: anInteger [ 
+	position := anInteger
 ]
 
 { #category : #printing }
