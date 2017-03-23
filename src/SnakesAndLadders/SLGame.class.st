@@ -13,6 +13,15 @@ SLGame >> addPlayer: aPlayer [
 	(tiles at: 1) addPlayer: aPlayer
 ]
 
+{ #category : #move }
+SLGame >> movePlayer: aPlayer distance: anInteger [ 
+	| targetTile | 
+	targetTile := self tileFor: aPlayer atDistance: anInteger.
+	(self tileOfPlayer: aPlayer) remove: aPlayer.
+	targetTile addPlayer: aPlayer. 
+	aPlayer position: targetTile position. 
+]
+
 { #category : #printing }
 SLGame >> printOn: aStream [
 
@@ -43,4 +52,9 @@ SLGame >> tileNumber: aNumber [
 	tiles := Array new: aNumber. 
 	1 to:	tiles size do: [ :i | 
 		tiles at: i put: (SLTile new position: i) ].
+]
+
+{ #category : #queries }
+SLGame >> tileOfPlayer: aSLPlayer [ 
+	^ tiles at: aSLPlayer position
 ]

@@ -227,7 +227,7 @@ SL0GameTest >> testTileAt [
 	self assert: (game tileAt: 6) printString equals: '[6]'
 ]
 
-{ #category : #tests }
+{ #category : #'tests done' }
 SL0GameTest >> testTileForAtDistance [
 	
 	| jill jack game |
@@ -239,7 +239,7 @@ SL0GameTest >> testTileForAtDistance [
 	self assert: (game tileFor: jill atDistance: 4) position equals: 5.
 ]
 
-{ #category : #tests }
+{ #category : #'tests done' }
 SL0GameTest >> testTileOfPlayer [
 	
 	| jill jack game |

@@ -12,6 +12,20 @@ SLGameTest >> testCheckingSimpleGame [
 	self assert: game tileNumber equals: 12
 ]
 
+{ #category : #'tests moving' }
+SLGameTest >> testMovePlayerADistance [
+	
+	| jill game |
+	game := SLGame new tileNumber: 12.
+	jill := SLPlayer new name: 'Jill'.
+	game addPlayer: jill. 
+	self assert: jill position equals: 1.
+	game movePlayer: jill distance: 4.
+	self assert: jill position equals: 5.
+	self assert: (game tileAt: 1) players isEmpty.
+	self assert: ((game tileAt: 5) players includes: jill).
+]
+
 { #category : #'test player introduction' }
 SLGameTest >> testPlayerAtStart [
 
@@ -82,4 +96,14 @@ SLGameTest >> testTileForAtDistance [
 	jill := SLPlayer new name: 'Jill'.
 	game addPlayer: jill. 
 	self assert: (game tileFor: jill atDistance: 4) position equals: 5.
+]
+
+{ #category : #'tests moving' }
+SLGameTest >> testTileOfPlayer [
+	
+	| jill game |
+	game := SLGame new tileNumber: 12.
+	jill := SLPlayer new name: 'Jill'.
+	game addPlayer: jill. 
+	self assert: (game tileOfPlayer: jill) position equals: 1.
 ]

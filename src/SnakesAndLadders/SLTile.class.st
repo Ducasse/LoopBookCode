@@ -42,3 +42,13 @@ SLTile >> printOn: aStream [
 	players do: [ :aPlayer | aPlayer printOn: aStream ].
 	aStream << ']'
 ]
+
+{ #category : #'add/remove' }
+SLTile >> remove: aPlayer [ 
+	players remove: aPlayer
+]
+
+{ #category : #adding }
+SLTile >> removePlayer: aPlayer [
+	players remove: aPlayer
+]
