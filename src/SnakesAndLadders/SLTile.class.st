@@ -1,8 +1,7 @@
 Class {
 	#name : #SLTile,
-	#superclass : #Object,
+	#superclass : #SLAbstractTile,
 	#instVars : [
-		'position',
 		'players'
 	],
 	#category : #SnakesAndLadders
@@ -22,16 +21,6 @@ SLTile >> initialize [
 SLTile >> players [ 
 
 	^ players
-]
-
-{ #category : #accessing }
-SLTile >> position [
-	^ position
-]
-
-{ #category : #accessing }
-SLTile >> position: anInteger [ 
-	position := anInteger
 ]
 
 { #category : #printing }
