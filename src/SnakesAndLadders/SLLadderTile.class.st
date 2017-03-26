@@ -5,9 +5,9 @@ Class {
 }
 
 { #category : #printing }
-SLLadderTile >> printOn: aStream [
-	aStream << '['.
-	aStream << position printString.
-	aStream << '->' << targetTile position printString.
-	aStream << ']'
+SLLadderTile >> printInsideOn: aStream [
+
+	super printInsideOn: aStream.
+	aStream << '->'.
+	(targetTile position printOn: aStream).
 ]
