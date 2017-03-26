@@ -5,10 +5,10 @@ Class {
 }
 
 { #category : #printing }
-SLSnakeTile >> printInsideOn: aStream [
-
+SLSnakeTile >> printOn: aStream [
+	aStream << '['.
 	targetTile position printOn: aStream. 
 	aStream << '<-'.
-	super printInsideOn: aStream
-	
+	position printOn: aStream.
+	aStream << ']'
 ]

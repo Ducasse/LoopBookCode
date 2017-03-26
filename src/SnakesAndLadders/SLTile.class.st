@@ -24,11 +24,12 @@ SLTile >> players [
 ]
 
 { #category : #printing }
-SLTile >> printInsideOn: aStream [
+SLTile >> printOn: aStream [
 
-	super printInsideOn: aStream.
+	aStream << '['.
+	position printOn: aStream.
 	players do: [ :aPlayer | aPlayer printOn: aStream ].
-
+	aStream << ']'
 ]
 
 { #category : #'add/remove' }
