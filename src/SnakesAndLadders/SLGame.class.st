@@ -26,7 +26,7 @@ SLGame >> movePlayer: aPlayer distance: anInteger [
 SLGame >> printOn: aStream [
 
 	tiles do: [ :aTile | 
-		aTile printOn: aStream ]
+		aStream << aTile printString ]
 ]
 
 { #category : #accessing }
