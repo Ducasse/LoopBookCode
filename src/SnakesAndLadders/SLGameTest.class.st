@@ -58,6 +58,23 @@ SLGameTest >> testPlayerAtStartIsAtPosition1 [
 	self assert: jill position equals: 1.
 ]
 
+{ #category : #'tests moving' }
+SLGameTest >> testPlayerStepOnASnake [
+	
+	| jill game |
+	game := SLGame new 
+		tileNumber: 12; 
+		setLadderFrom: 2 to: 6;
+		setLadderFrom: 7 to: 9;
+		setSnakeFrom: 11 to: 5.
+	jill := SLPlayer new name: 'Jill'.
+	game addPlayer: jill. 
+	game movePlayer: jill distance: 10. 
+	self assert: jill position equals: 5.
+	self assert: (game tileAt: 1) players isEmpty. 
+	self assert: ((game tileAt: 5) players includes: jill). 
+]
+
 { #category : #'tests start' }
 SLGameTest >> testPrintingSimpleGame [
 

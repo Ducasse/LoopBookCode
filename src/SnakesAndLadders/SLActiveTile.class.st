@@ -8,6 +8,13 @@ Class {
 }
 
 { #category : #accessing }
+SLActiveTile >> acceptPlayer: aPlayer [
+	
+	targetTile acceptPlayer: aPlayer 
+	
+]
+
+{ #category : #accessing }
 SLActiveTile >> to: aTile [
 
 	targetTile := aTile

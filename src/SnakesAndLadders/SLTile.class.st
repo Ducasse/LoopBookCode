@@ -9,9 +9,10 @@ Class {
 
 { #category : #'enter/leave' }
 SLTile >> acceptPlayer: aPlayer [
-
+	
 	self addPlayer: aPlayer. 
-	aPlayer position: self position. 
+	super acceptPlayer: aPlayer.
+	
 ]
 
 { #category : #adding }

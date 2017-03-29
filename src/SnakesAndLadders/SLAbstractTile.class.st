@@ -7,6 +7,11 @@ Class {
 	#category : #SnakesAndLadders
 }
 
+{ #category : #'accept/release' }
+SLAbstractTile >> acceptPlayer: aPlayer [
+	aPlayer position: self position. 
+]
+
 { #category : #accessing }
 SLAbstractTile >> position [
 	^ position
