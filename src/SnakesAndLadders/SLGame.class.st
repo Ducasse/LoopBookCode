@@ -29,6 +29,26 @@ SLGame >> printOn: aStream [
 		aStream << aTile printString ]
 ]
 
+{ #category : #initialize }
+SLGame >> setLadderFrom: aSourcePosition to: aTargetPosition [
+
+	tiles 
+		at: aSourcePosition 
+		put: (SLLadderTile new 
+					position: aSourcePosition ; 
+					to: (tiles at: aTargetPosition) ; yourself)
+]
+
+{ #category : #initialize }
+SLGame >> setSnakeFrom: aSourcePosition to: aTargetPosition [
+
+	tiles 
+		at: aSourcePosition 
+		put: (SLSnakeTile new 
+					position: aSourcePosition; 
+					to: (tiles at: aTargetPosition) ; yourself)
+]
+
 { #category : #accessing }
 SLGame >> tileAt: aNumber [
 
