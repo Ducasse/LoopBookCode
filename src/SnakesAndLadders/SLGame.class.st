@@ -17,9 +17,9 @@ SLGame >> addPlayer: aPlayer [
 SLGame >> movePlayer: aPlayer distance: anInteger [ 
 	| targetTile | 
 	targetTile := self tileFor: aPlayer atDistance: anInteger.
-	(self tileOfPlayer: aPlayer) remove: aPlayer.
-	targetTile addPlayer: aPlayer. 
-	aPlayer position: targetTile position. 
+	(self tileOfPlayer: aPlayer) releasePlayer: aPlayer.
+	targetTile acceptPlayer: aPlayer. 
+	
 ]
 
 { #category : #printing }

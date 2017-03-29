@@ -7,6 +7,13 @@ Class {
 	#category : #SnakesAndLadders
 }
 
+{ #category : #'enter/leave' }
+SLTile >> acceptPlayer: aPlayer [
+
+	self addPlayer: aPlayer. 
+	aPlayer position: self position. 
+]
+
 { #category : #adding }
 SLTile >> addPlayer: aPlayer [	
 	players add: aPlayer
@@ -29,6 +36,11 @@ SLTile >> printInsideOn: aStream [
 	super printInsideOn: aStream.
 	players do: [ :aPlayer | aPlayer printOn: aStream ].
 
+]
+
+{ #category : #'enter/leave' }
+SLTile >> releasePlayer: aPlayer [
+	self removePlayer: aPlayer
 ]
 
 { #category : #'add/remove' }
