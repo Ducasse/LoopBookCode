@@ -12,6 +12,22 @@ SLGameTest >> testCheckingSimpleGame [
 	self assert: game tileNumber equals: 12
 ]
 
+{ #category : #'tests - play' }
+SLGameTest >> testCurrentPlayer [
+	
+	| jack game jill |
+	game := SLGame new tileNumber: 12.
+	jack := SLPlayer new name: 'Jack'.
+	jill := SLPlayer new name: 'Jill'.
+	game addPlayer: jack; addPlayer: jill. 
+	game turns: 1.
+	self assert: game currentPlayer equals: jack. 
+	game turns: 2.
+	self assert: game currentPlayer equals: jill. 
+	game turns: 3.
+	self assert: game currentPlayer equals: jack. 
+]
+
 { #category : #'tests start' }
 SLGameTest >> testFullGamePrintString [
 
@@ -22,6 +38,20 @@ SLGameTest >> testFullGamePrintString [
 		setLadderFrom: 7 to: 9;
 		setSnakeFrom: 11 to: 5.
 	self assert: game printString equals: '[1][2->6][3][4][5][6][7->9][8][9][10][5<-11][12]'
+]
+
+{ #category : #'tests - play' }
+SLGameTest >> testIsOver [
+	
+	| jack game |
+	game := SLGame new tileNumber: 12.
+	jack := SLPlayer new name: 'Jack'.
+	game addPlayer: jack. 
+	self assert: jack position equals: 1. 
+	game movePlayer: jack distance: 11.
+	"(game tileAt: 12) acceptPlayer: jack. "
+	self assert: jack position equals: 12.
+	self assert: game isOver.
 ]
 
 { #category : #'tests moving' }

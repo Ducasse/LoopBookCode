@@ -2,7 +2,9 @@ Class {
 	#name : #SLGame,
 	#superclass : #Object,
 	#instVars : [
-		'tiles'
+		'tiles',
+		'players',
+		'turns'
 	],
 	#category : #SnakesAndLadders
 }
@@ -10,7 +12,30 @@ Class {
 { #category : #accessing }
 SLGame >> addPlayer: aPlayer [
 	aPlayer position: 1.
+	players add: aPlayer. 
 	(tiles at: 1) addPlayer: aPlayer
+]
+
+{ #category : #accessing }
+SLGame >> currentPlayer [
+
+	| rest |
+	rest := (turns \\ players size).
+	^ players at: (rest isZero
+		ifTrue: [ players size ]
+		ifFalse: [ rest ])	
+]
+
+{ #category : #initialize }
+SLGame >> initialize [
+	players := OrderedCollection new. 
+	turns := 0
+]
+
+{ #category : #testing }
+SLGame >> isOver [
+	
+	
 ]
 
 { #category : #move }
@@ -77,4 +102,9 @@ SLGame >> tileNumber: aNumber [
 { #category : #queries }
 SLGame >> tileOfPlayer: aSLPlayer [ 
 	^ tiles at: aSLPlayer position
+]
+
+{ #category : #private }
+SLGame >> turns: aNumber [
+	turns := aNumber
 ]
