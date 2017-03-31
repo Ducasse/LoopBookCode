@@ -4,6 +4,17 @@ Class {
 	#category : #SnakesAndLadders
 }
 
+{ #category : #'tests - play' }
+SLGameTest >> testCanMoveToPosition [
+	
+	| game |
+	game := SLGame new tileNumber: 12.
+	self assert: (game canMoveToPosition: 8).
+	self assert: (game canMoveToPosition: 12).
+	self deny: (game canMoveToPosition: 13).
+	
+]
+
 { #category : #'tests start' }
 SLGameTest >> testCheckingSimpleGame [
 

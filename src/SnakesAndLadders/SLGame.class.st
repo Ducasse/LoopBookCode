@@ -16,6 +16,13 @@ SLGame >> addPlayer: aPlayer [
 	(tiles at: 1) addPlayer: aPlayer
 ]
 
+{ #category : #testing }
+SLGame >> canMoveToPosition: aNumber [
+	"We can only move if we stay within the game.
+	This implies that the player should draw an exact number to land on the finish tile."
+	^ aNumber <= tiles size
+]
+
 { #category : #accessing }
 SLGame >> currentPlayer [
 
@@ -34,8 +41,8 @@ SLGame >> initialize [
 
 { #category : #testing }
 SLGame >> isOver [
-	
-	
+
+	^ players anySatisfy: [ :each | each position = tiles size ]
 ]
 
 { #category : #move }
