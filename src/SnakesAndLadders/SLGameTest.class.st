@@ -96,6 +96,73 @@ SLGameTest >> testPlayOneStep [
 ]
 
 { #category : #'test - game play' }
+SLGameTest >> testPlayOneStepOnALadder [
+	
+	| jill jack game |
+	game := SLGame new 
+				tileNumber: 12; 
+				setLadderFrom: 2 to: 6;
+				setLadderFrom: 7 to: 9;
+				setSnakeFrom: 11 to: 5.
+	jack := SLPlayer new name: 'Jack'.
+	jill := SLPlayer new name: 'Jill'.
+	game addPlayer: jill. 
+	game addPlayer: jack. 
+	game playOneStepWithRoll: 1.
+	self assert: jill position equals: 6.
+	self assert: (game tileAt: 1) players size equals: 1. 
+	self assert: ((game tileAt: 6) players includes: jill). 
+]
+
+{ #category : #'test - game play' }
+SLGameTest >> testPlayOneStepOnExactFinish [
+	
+	| jill jack game |
+	game := SLGame new 
+			tileNumber: 12; 
+			setLadderFrom: 2 to: 6;
+			setLadderFrom: 7 to: 9;
+			setSnakeFrom: 11 to: 5.
+	jack := SLPlayer new name: 'Jack'.
+	jill := SLPlayer new name: 'Jill'.
+	game addPlayer: jill. 
+	game addPlayer: jack. 
+
+	game playOneStepWithRoll: 11.
+	"jill lands on the finish tile!"
+	self assert: jill position equals: 12.
+	self assert: (game tileAt: 1) players size equals: 1. 
+	self assert: ((game tileAt: 12) players includes: jill).
+	self assert: game isOver.
+]
+
+{ #category : #'test - game play' }
+SLGameTest >> testPlayOneStepOnInexactFinish [
+	
+	| jill jack game |
+	game := SLGame new 
+			tileNumber: 12; 
+			setLadderFrom: 2 to: 6;
+			setLadderFrom: 7 to: 9;
+			setSnakeFrom: 11 to: 5.
+	jack := SLPlayer new name: 'Jack'.
+	jill := SLPlayer new name: 'Jill'.
+	game addPlayer: jill. 
+	game addPlayer: jack. 
+     "jill moves"
+	game playOneStepWithRoll: 9.
+	self assert: jill position equals: 10.
+	self assert: ((game tileAt: 10) players includes: jill).
+	"jack moves"
+	game playOneStepWithRoll: 2. 
+	"jill tries to move but in fact stays at her place"
+	game playOneStepWithRoll: 5.
+	self assert: jill position equals: 10.
+	self assert: ((game tileAt: 10) players includes: jill).
+	self deny: game isOver.
+]
+
+{ #category : #'test - game play' }
 SLGameTest >> testPlayTwoSteps [
 	
 	| jill jack game |

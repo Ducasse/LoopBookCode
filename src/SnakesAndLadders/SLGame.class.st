@@ -1,3 +1,17 @@
+"
+| jill jack game |
+Transcript open.
+game := SLGame new 
+			tileNumber: 12; 
+			setLadderFrom: 2 to: 6;
+			setLadderFrom: 7 to: 9;
+			setSnakeFrom: 11 to: 5.
+jack := SLPlayer new name: 'Jack'.
+jill := SLPlayer new name: 'Jill'.
+game addPlayer: jill.
+game addPlayer: jack.
+game play
+"
 Class {
 	#name : #SLGame,
 	#superclass : #Object,
@@ -52,6 +66,14 @@ SLGame >> movePlayer: aPlayer distance: anInteger [
 	(self tileOfPlayer: aPlayer) releasePlayer: aPlayer.
 	targetTile acceptPlayer: aPlayer. 
 	
+]
+
+{ #category : #play }
+SLGame >> play [
+
+	Transcript show: self; cr.
+	[ self isOver not ] whileTrue: [
+		self playOneStepWithRoll: 6 atRandom ] 
 ]
 
 { #category : #play }
