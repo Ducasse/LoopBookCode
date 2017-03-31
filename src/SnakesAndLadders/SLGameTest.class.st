@@ -79,6 +79,43 @@ SLGameTest >> testMovePlayerADistance [
 	self assert: ((game tileAt: 5) players includes: jill).
 ]
 
+{ #category : #'test - game play' }
+SLGameTest >> testPlayOneStep [
+	
+	| jill jack game |
+	game := SLGame new tileNumber: 12.
+	jack := SLPlayer new name: 'Jack'.
+	jill := SLPlayer new name: 'Jill'.
+	game addPlayer: jill. 
+	game addPlayer: jack. 
+	self assert: jill position equals: 1. 
+	game playOneStepWithRoll: 3.
+	self assert: jill position equals: 4.
+	self assert: (game tileAt: 1) players size equals: 1. 
+	self assert: ((game tileAt: 4) players includes: jill). 
+]
+
+{ #category : #'test - game play' }
+SLGameTest >> testPlayTwoSteps [
+	
+	| jill jack game |
+	game := SLGame new tileNumber: 12.
+	jack := SLPlayer new name: 'Jack'.
+	jill := SLPlayer new name: 'Jill'.
+	game addPlayer: jill.
+	game addPlayer: jack.
+	self assert: jill position equals: 1. 
+	game playOneStepWithRoll: 3.
+	game playOneStepWithRoll: 2.
+	"nothing changes for jill"
+	self assert: jill position equals: 4.
+	self assert: ((game tileAt: 4) players includes: jill). 
+	"now let us verify that jack moved correctly"	
+	self assert: (game tileAt: 1) players size equals: 0. 
+	self assert: jack position equals: 3.
+	self assert: ((game tileAt: 3) players includes: jack). 
+]
+
 { #category : #'test player introduction' }
 SLGameTest >> testPlayerAtStart [
 

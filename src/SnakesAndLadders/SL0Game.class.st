@@ -63,6 +63,13 @@ SL0Game >> addPlayer: aPlayer [
 ]
 
 { #category : #testing }
+SL0Game >> canMoveTo: aNumber [
+	"We can only move if we stay within the game.
+	This implies that the player should draw an exact number to land on the finish tile."
+	^ (aNumber <= tiles size) 
+]
+
+{ #category : #testing }
 SL0Game >> canMoveToPosition: aNumber [
 	"We can only move if we stay within the game.
 	This implies that the player should draw an exact number to land on the finish tile."

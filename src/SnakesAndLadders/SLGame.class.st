@@ -54,6 +54,19 @@ SLGame >> movePlayer: aPlayer distance: anInteger [
 	
 ]
 
+{ #category : #play }
+SLGame >> playOneStepWithRoll: aNumber [
+		
+	| currentPlayer |
+	turns := turns + 1.
+	currentPlayer := self currentPlayer. 
+	Transcript show: currentPlayer printString, 'drew ', aNumber printString, ': '. 
+	(self canMoveToPosition: currentPlayer position + aNumber)
+		ifTrue: [ self movePlayer: currentPlayer distance: aNumber ].
+	Transcript show: self; cr.
+		
+]
+
 { #category : #printing }
 SLGame >> printOn: aStream [
 
