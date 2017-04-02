@@ -1,5 +1,8 @@
 "
-self  new openInWindow
+| t | 
+t := self  new.
+t openInWindow.
+t inspect.
 "
 Class {
 	#name : #MiniTurtleFlakeDemo,
@@ -85,6 +88,13 @@ MiniTurtleFlakeDemo >> drawSpike: canvas [
 
 ]
 
+{ #category : #'turtle messages' }
+MiniTurtleFlakeDemo >> goTo: aPosition [
+
+	turtlePosition := aPosition.
+	self render
+]
+
 { #category : #initialization }
 MiniTurtleFlakeDemo >> initialize [ 
 
@@ -116,7 +126,7 @@ MiniTurtleFlakeDemo >> initialize [
 
 ]
 
-{ #category : #rendering }
+{ #category : #drawing }
 MiniTurtleFlakeDemo >> render [ 
 
 	surface drawDuring: [:canvas | 
@@ -128,4 +138,10 @@ MiniTurtleFlakeDemo >> render [
 		 self drawCircles: canvas
 	].
 
+]
+
+{ #category : #accessing }
+MiniTurtleFlakeDemo >> turtlePosition: aPosition [
+
+	turtlePosition := aPosition
 ]

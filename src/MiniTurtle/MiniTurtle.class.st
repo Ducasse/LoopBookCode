@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'direction'
 	],
-	#category : 'MiniTurtle'
+	#category : #MiniTurtle
 }
 
 { #category : #operations }
