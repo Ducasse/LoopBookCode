@@ -8,11 +8,43 @@ Class {
 	#category : #TemperatureLogger
 }
 
+{ #category : #operation }
+TemperatureLogger >> alternateAverage [
+	
+	| sum |
+	sum := 0.
+	measures do: [ :aMeasure | sum := sum + aMeasure ].
+	^ sum / measures size
+]
+
+{ #category : #operation }
+TemperatureLogger >> average [
+
+	^ measures average 
+]
+
 { #category : #initialization }
 TemperatureLogger >> initialize [
 
 	location := 'Home'.
 	measures := OrderedCollection new. 
+]
+
+{ #category : #operation }
+TemperatureLogger >> latestRecord [
+
+	^ measures last
+]
+
+{ #category : #operation }
+TemperatureLogger >> latestRecords: aNumber [
+
+	| records reversed | 
+	records := OrderedCollection new.
+	reversed := measures reversed. 
+	1 to: aNumber do: [ :each | 
+			records add: ( reversed at: each ) ].
+	^ records
 ]
 
 { #category : #accessing }
