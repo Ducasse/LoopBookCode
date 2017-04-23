@@ -33,18 +33,22 @@ TemperatureLogger >> initialize [
 { #category : #operation }
 TemperatureLogger >> latestRecord [
 
-	^ measures last
+	^ measures first
 ]
 
 { #category : #operation }
 TemperatureLogger >> latestRecords: aNumber [
 
-	| records reversed | 
+	"| records reversed | 
 	records := OrderedCollection new.
 	reversed := measures reversed. 
 	1 to: aNumber do: [ :each | 
 			records add: ( reversed at: each ) ].
-	^ records
+	^ records"
+	| records |
+	records := OrderedCollection new.
+	1 to: aNumber do: [:i | records add: (measures at: i)  ].
+	^ records 
 ]
 
 { #category : #accessing }
@@ -62,5 +66,5 @@ TemperatureLogger >> recordCount [
 { #category : #operation }
 TemperatureLogger >> recordTemperature: aNumber [
 	"Add the temperature to the list of recorded measures"
-	measures add: aNumber
+	measures addFirst: aNumber
 ]

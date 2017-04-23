@@ -65,6 +65,19 @@ TemperatureLoggerTest >> testLatestRecords [
 ]
 
 { #category : #tests }
+TemperatureLoggerTest >> testLatestRecordsNewVersion [
+
+	| office |
+	office := TemperatureLogger new location: 'Office'.
+	office recordTemperature: 16.
+	office recordTemperature: 17.
+	office recordTemperature: 19.
+	office recordTemperature: 18.
+	office recordTemperature: 21.
+	self assert: (office latestRecords: 3) equals: #(21 18 19) asOrderedCollection
+]
+
+{ #category : #tests }
 TemperatureLoggerTest >> testRecords [
 
 	| office |
