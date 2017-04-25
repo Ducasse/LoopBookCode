@@ -23,6 +23,12 @@ TemperatureLogger >> average [
 	^ measures average 
 ]
 
+{ #category : #operation }
+TemperatureLogger >> averageLast: numberOfDays [
+
+	^ (self latestRecords: numberOfDays) sum / numberOfDays
+]
+
 { #category : #initialization }
 TemperatureLogger >> initialize [
 
@@ -33,21 +39,18 @@ TemperatureLogger >> initialize [
 { #category : #operation }
 TemperatureLogger >> latestRecord [
 
-	^ measures first
+	^ measures last
 ]
 
 { #category : #operation }
 TemperatureLogger >> latestRecords: aNumber [
 
-	"| records reversed | 
-	records := OrderedCollection new.
-	reversed := measures reversed. 
-	1 to: aNumber do: [ :each | 
-			records add: ( reversed at: each ) ].
-	^ records"
 	| records |
 	records := OrderedCollection new.
-	1 to: aNumber do: [:i | records add: (measures at: i)  ].
+	measures size 
+		to: measures size - aNumber + 1 
+		by: -1 
+		do: [:i | records addFirst: (measures at: i)].
 	^ records 
 ]
 
@@ -66,5 +69,5 @@ TemperatureLogger >> recordCount [
 { #category : #operation }
 TemperatureLogger >> recordTemperature: aNumber [
 	"Add the temperature to the list of recorded measures"
-	measures addFirst: aNumber
+	measures add: aNumber
 ]

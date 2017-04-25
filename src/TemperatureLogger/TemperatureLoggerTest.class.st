@@ -35,8 +35,9 @@ TemperatureLoggerTest >> testAverageWithinTemperature [
 	office := TemperatureLogger new location: 'Office'.
 	#( 16 17 17 16 18 17 18 19 19 19 18 19 19 20 19 20 19 20 20 20 19 20 ) 
 		do: [ :aMeasure | office recordTemperature: aMeasure ].
+	"it means that it is getting warmer"
 	self assert: office average equals: 409/22.
-	self assert: (office averageLast: 7) equals: 409/22
+	self assert: (office averageLast: 7) equals: #(20 19 20 20 20 19 20) sum / 7
 ]
 
 { #category : #tests }
@@ -61,20 +62,7 @@ TemperatureLoggerTest >> testLatestRecords [
 	office recordTemperature: 19.
 	office recordTemperature: 18.
 	office recordTemperature: 21.
-	self assert: (office latestRecords: 3) equals: #(21 18 19) asOrderedCollection
-]
-
-{ #category : #tests }
-TemperatureLoggerTest >> testLatestRecordsNewVersion [
-
-	| office |
-	office := TemperatureLogger new location: 'Office'.
-	office recordTemperature: 16.
-	office recordTemperature: 17.
-	office recordTemperature: 19.
-	office recordTemperature: 18.
-	office recordTemperature: 21.
-	self assert: (office latestRecords: 3) equals: #(21 18 19) asOrderedCollection
+	self assert: (office latestRecords: 3) equals: #(19 18 21) asOrderedCollection
 ]
 
 { #category : #tests }
