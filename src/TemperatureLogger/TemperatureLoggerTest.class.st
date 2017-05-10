@@ -33,11 +33,22 @@ TemperatureLoggerTest >> testAverageWithinTemperature [
 
 	| office |
 	office := TemperatureLogger new location: 'Office'.
-	#( 16 17 17 16 18 17 18 19 19 19 18 19 19 20 19 20 19 20 20 20 19 20 ) 
+	#(16 17 17 16 18 17 18 19 19 19 18 19 19 20 19 20 19 20 20 20 19 20) 
 		do: [ :aMeasure | office recordTemperature: aMeasure ].
 	"it means that it is getting warmer"
 	self assert: office average equals: 409/22.
 	self assert: (office averageLast: 7) equals: #(20 19 20 20 20 19 20) sum / 7
+]
+
+{ #category : #tests }
+TemperatureLoggerTest >> testAveragesPer [
+
+	| office |
+	office := TemperatureLogger new location: 'Office'.
+	#(16    17 17 16 18 17 18 19    19 19 18 19 19 20 19   20 19 20 20 20 19 20) 
+		do: [ :aMeasure | office recordTemperature: aMeasure ].
+	"it means that it is getting warmer"
+	self assert: (office averagePer: 7) equals: { #(17 17 16 18 17 18 19 )sum /7 . #(19 19 18 19 19 20 19) sum /7 . #(20 19 20 20 20 19 20) sum / 7}
 ]
 
 { #category : #tests }
@@ -76,4 +87,16 @@ TemperatureLoggerTest >> testRecords [
 	
 	"We got effectively two measures"
 	self assert: office recordCount equals: 2.
+]
+
+{ #category : #tests }
+TemperatureLoggerTest >> testSplitEvery [
+
+	| office |
+	office := TemperatureLogger new location: 'Office'.
+	#(17 17 16 18 17 18 19    19 19 18 19 19 20 19   20 19 20 20 20 19 20  33) 
+		do: [ :aMeasure | office recordTemperature: aMeasure ].
+	self 
+		assert: (office splitEvery: 7) 
+		equals: { OrderedCollection withAll: #(17 17 16 18 17 18 19) . OrderedCollection withAll: #(19 19 18 19 19 20 19) . OrderedCollection withAll: #(20 19 20 20 20 19 20)}
 ]

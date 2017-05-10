@@ -1,3 +1,6 @@
+"
+Current implementation is storing more recent at the end.
+"
 Class {
 	#name : #TemperatureLogger,
 	#superclass : #Object,
@@ -70,4 +73,13 @@ TemperatureLogger >> recordCount [
 TemperatureLogger >> recordTemperature: aNumber [
 	"Add the temperature to the list of recorded measures"
 	measures add: aNumber
+]
+
+{ #category : #operation }
+TemperatureLogger >> splitEvery: n [
+	^ (n
+		to: measures size
+		by: n)
+		collect: [:index |
+			(measures copyFrom: index - n + 1 to: index)]
 ]
