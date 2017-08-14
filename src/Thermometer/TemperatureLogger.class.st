@@ -34,7 +34,7 @@ TemperatureLogger >> location: aString [
 
 { #category : #'as yet unclassified' }
 TemperatureLogger >> recordTemperature: anInteger [ 
-	self temperatures add: anInteger.
+	self temperatures add: (DateAndTime now) -> anInteger.
 ]
 
 { #category : #'as yet unclassified' }

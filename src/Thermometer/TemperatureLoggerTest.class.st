@@ -32,5 +32,5 @@ TemperatureLoggerTest >> testRecordTemperature [
 	office := TemperatureLogger new.
 	office location: 'Office'.
 	office recordTemperature: 19.
-	self assert: office lastTemperature equals: 19 
+	self assert: office lastTemperature value equals: 19 
 ]
