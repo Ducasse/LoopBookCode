@@ -8,6 +8,15 @@ Class {
 	#category : #Thermometer
 }
 
+{ #category : #accessing }
+TemperatureLogger >> average [
+	
+	|sum|
+	sum :=0.
+	self temperatures do:  [ :each | sum := sum + each value ].
+	^ sum / (self temperatures size)
+]
+
 { #category : #initialization }
 TemperatureLogger >> initialize [
 	

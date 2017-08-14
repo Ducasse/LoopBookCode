@@ -8,6 +8,17 @@ Class {
 }
 
 { #category : #tests }
+TemperatureLoggerTest >> testAverage [
+	|office|
+	office := TemperatureLogger new.
+	office location: 'Office'.
+	office recordTemperature: 22.
+	office recordTemperature: 23.
+	office recordTemperature: 21.
+	self assert: office average equals: 22.
+]
+
+{ #category : #tests }
 TemperatureLoggerTest >> testIfLocationIsRight [
 
 	| office |
