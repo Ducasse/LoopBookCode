@@ -1,3 +1,8 @@
+"
+I'm a simple temperature logger.
+
+
+"
 Class {
 	#name : #TemperatureLogger,
 	#superclass : #Object,
@@ -31,27 +36,27 @@ TemperatureLogger >> lastTemperature [
 	^ self temperatures last.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 TemperatureLogger >> location [
 	^ location
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 TemperatureLogger >> location: aString [ 
 	location := aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #recording }
 TemperatureLogger >> recordTemperature: anInteger [ 
 	self temperatures add: (DateAndTime now) -> anInteger.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 TemperatureLogger >> temperatures [
 	^ temperatures
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 TemperatureLogger >> temperatures: anOrderedCollection [ 
 	temperatures := anOrderedCollection
 ]
