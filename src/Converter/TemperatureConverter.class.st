@@ -1,11 +1,11 @@
 "
-I'm temperature converter. I convert celcius and farhenheit. 
+I'm temperature converter. I convert celcius and farhenheit degrees. 
 In addition, I can also be ued to record temperatures over a period.
 
-[[[
+```
 TemperatureConverter new 
 	convertFahrenheit: 58
-]]]
+```
 "
 Class {
 	#name : #TemperatureConverter,
