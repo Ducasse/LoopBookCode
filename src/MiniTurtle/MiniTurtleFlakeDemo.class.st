@@ -1,8 +1,12 @@
 "
+Unfinished
+
+```
 | t | 
 t := self  new.
 t openInWindow.
 t inspect.
+```
 "
 Class {
 	#name : #MiniTurtleFlakeDemo,

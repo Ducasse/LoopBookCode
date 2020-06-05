@@ -1,5 +1,5 @@
 "
-A simple implementation of a turtle
+A simple implementation of a turtle.
 "
 Class {
 	#name : #MiniTurtle,

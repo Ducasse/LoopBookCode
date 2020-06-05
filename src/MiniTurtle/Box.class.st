@@ -1,7 +1,11 @@
 "
+The old joe the box implementationNotes 
+
+```
 | joe  |
 joe := Box new.
 joe draw
+```
 "
 Class {
 	#name : #Box,
@@ -14,7 +18,7 @@ Class {
 	#category : #MiniTurtle
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #drawing }
 Box >> draw [
    "Draw the receiver position in black"
    "Box new initialize draw"
@@ -27,7 +31,7 @@ Box >> draw [
                   aTurtle turnLeft: 90]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #initialization }
 Box >> initialize [
 	"A box is initialized to be in the center of the screen, with 
 	50 pixels size and 0 tilt"
@@ -37,12 +41,12 @@ Box >> initialize [
 	position := World bounds center
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 Box >> size [
    ^ size
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 Box >> size: anInteger [
    size := anInteger
 ]

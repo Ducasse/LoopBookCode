@@ -4,14 +4,14 @@ Class {
 	#category : #MiniTurtle
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #drawing }
 MiniHiddeableTurtle >> drawOn: aCanvas [
 
 	self visible 
 		ifTrue: [ super drawOn: aCanvas ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #initialization }
 MiniHiddeableTurtle >> initialize [
 
 	super initialize.
