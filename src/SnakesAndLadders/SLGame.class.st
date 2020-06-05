@@ -1,4 +1,7 @@
 "
+I'm an implementation of Snakes and Ladders game. 
+
+```
 | jill jack game |
 Transcript open.
 game := SLGame new 
@@ -11,6 +14,7 @@ jill := SLPlayer new name: 'Jill'.
 game addPlayer: jill.
 game addPlayer: jack.
 game play
+```
 "
 Class {
 	#name : #SLGame,
