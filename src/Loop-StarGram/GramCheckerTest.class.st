@@ -242,7 +242,7 @@ GramCheckerTest >> testIsograms [
 	checker := GramChecker new.
 	
 	self isograms do: [ :each |
-		self assert: (checker isIsogram: each)]
+		self assert: (checker isIsogramFastest: each)]
 ]
 
 { #category : #tests }

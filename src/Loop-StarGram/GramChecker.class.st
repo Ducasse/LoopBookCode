@@ -8,13 +8,13 @@ An isogram is a word or phrase without a repeating letter. Examples of isograms:
 
 Have fun finding french isograms!
 Tx to Sven Van Caekenberghe
-[[[
+```
 (ZnDefaultCharacterEncoder 
   value: ZnCharacterEncoder latin1 
   during: [
     ZnClient new 
-      get: 'http://www.pallier.org/ressources/dicofr/liste.de.mots.francais.frgut.txt' ]) lines.
-]]]
+      get: 'http://www.pallier.org/extra/liste.de.mots.francais.frgut.txt' ]) lines.
+```
 "
 Class {
 	#name : #GramChecker,

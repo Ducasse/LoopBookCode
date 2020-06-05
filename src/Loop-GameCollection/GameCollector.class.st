@@ -1,4 +1,6 @@
 "
+Unfinished. 
+Just brainstorming for the book
 Simple holder of a game collection
 
 Next point 
