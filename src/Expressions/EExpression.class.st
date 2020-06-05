@@ -1,3 +1,6 @@
+"
+Just an expression model without a visitor. 
+"
 Class {
 	#name : #EExpression,
 	#superclass : #Object,

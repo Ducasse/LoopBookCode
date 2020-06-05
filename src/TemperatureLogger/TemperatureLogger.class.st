@@ -1,4 +1,5 @@
 "
+Unfinished. 
 Current implementation is storing more recent at the end.
 "
 Class {
@@ -39,6 +40,12 @@ TemperatureLogger >> initialize [
 	measures := OrderedCollection new. 
 ]
 
+{ #category : #accessing }
+TemperatureLogger >> lastTemperature [
+
+	^ self temperatures last.
+]
+
 { #category : #operation }
 TemperatureLogger >> latestRecord [
 
@@ -55,6 +62,11 @@ TemperatureLogger >> latestRecords: aNumber [
 		by: -1 
 		do: [:i | records addFirst: (measures at: i)].
 	^ records 
+]
+
+{ #category : #accessing }
+TemperatureLogger >> location [
+	^ location
 ]
 
 { #category : #accessing }
@@ -82,4 +94,14 @@ TemperatureLogger >> splitEvery: n [
 		by: n)
 		collect: [:index |
 			(measures copyFrom: index - n + 1 to: index)]
+]
+
+{ #category : #accessing }
+TemperatureLogger >> temperatures [
+	^ temperatures
+]
+
+{ #category : #accessing }
+TemperatureLogger >> temperatures: anOrderedCollection [ 
+	temperatures := anOrderedCollection
 ]

@@ -1,3 +1,6 @@
+"
+A simple leaf.
+"
 Class {
 	#name : #MFFile,
 	#superclass : #MFElement,

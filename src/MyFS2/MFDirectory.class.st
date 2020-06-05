@@ -1,3 +1,6 @@
+"
+A little composite.
+"
 Class {
 	#name : #MFDirectory,
 	#superclass : #MFElement,

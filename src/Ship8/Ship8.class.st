@@ -1,3 +1,10 @@
+"
+Chip8 emulator as written by Henrik. 
+
+http://www.multigesture.net/articles/how-to-write-an-emulator-chip-8-interpreter/
+
+http://smalltalkhub.com/#!/~Latsabben/Chip8
+"
 Class {
 	#name : #Ship8,
 	#superclass : #Object,

@@ -1,3 +1,6 @@
+"
+A naive filesystem
+"
 Class {
 	#name : #MFElement,
 	#superclass : #Object,
